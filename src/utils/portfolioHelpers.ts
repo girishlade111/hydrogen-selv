@@ -118,3 +118,9 @@ export function formatReadingTime(minutes: number): string {
   return `${minutes} min read`;
 }
 
+export function getBlogPostUrl(origin: string, slug: string): string {
+  const cleanOrigin = origin.replace(/\/+$/, '');
+  const cleanSlug = slug.replace(/^\/+/, '');
+  return `${cleanOrigin}/blog/${cleanSlug}`;
+}
+

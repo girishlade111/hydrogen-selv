@@ -1,3 +1,7 @@
+import { Check, Link2 } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useParams } from 'react-router-dom';
 import { AnimatedButton } from '../components/AnimatedButton';
 import { BackButton } from '../components/BackButton';
@@ -7,15 +11,79 @@ import { MotionReveal } from '../components/MotionReveal';
 import { NewsletterCard } from '../components/NewsletterCard';
 import { PageShell } from '../components/PageShell';
 import { SiteFooter } from '../components/SiteFooter';
+import { MOTION_TOKENS } from '../motion/variants';
 import {
   estimateReadingTimeMinutes,
   formatReadingTime,
   getBlogPostBySlug,
+  getBlogPostUrl,
 } from '../utils/portfolioHelpers';
 
 export function BlogDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const article = getBlogPostBySlug(slug);
+  const [toastState, setToastState] = useState<'idle' | 'copied' | 'error'>('idle');
+  const timerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current !== null) {
+        window.clearTimeout(timerRef.current);
+      }
+    };
+  }, []);
+
+  const showToast = (nextState: 'copied' | 'error') => {
+    if (timerRef.current !== null) {
+      window.clearTimeout(timerRef.current);
+    }
+    setToastState(nextState);
+    timerRef.current = window.setTimeout(() => {
+      setToastState('idle');
+    }, 3200);
+  };
+
+  const copyWithTextareaFallback = (text: string): boolean => {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } finally {
+      document.body.removeChild(textarea);
+    }
+    return copied;
+  };
+
+  const handleCopyLink = async () => {
+    if (!article) return;
+    const url = getBlogPostUrl(window.location.origin, article.slug);
+
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(url);
+        showToast('copied');
+        return;
+      } catch {
+        // Fall through to textarea copy fallback when Clipboard API permission is restricted
+      }
+    }
+
+    try {
+      if (copyWithTextareaFallback(url)) {
+        showToast('copied');
+      } else {
+        showToast('error');
+      }
+    } catch {
+      showToast('error');
+    }
+  };
 
   if (!article) {
     return (
@@ -53,8 +121,29 @@ export function BlogDetailPage() {
               className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/40 to-black/25"
             />
 
-            <div className="absolute left-5 top-5">
+            <div className="absolute inset-x-5 top-5 flex items-center justify-between gap-3">
               <BackButton to="/blog" label="Back to notes" />
+              <motion.button
+                type="button"
+                onClick={handleCopyLink}
+                aria-label={toastState === 'copied' ? 'Link copied' : 'Copy Link'}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.96 }}
+                transition={MOTION_TOKENS.springTactile}
+                className="inline-flex h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-xl border border-white/[0.12] bg-black/45 px-3.5 text-[13px] font-medium text-white/95 backdrop-blur-md transition-colors hover:border-white/[0.22] hover:bg-black/65 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f7cb15]"
+              >
+                {toastState === 'copied' ? (
+                  <>
+                    <Check className="h-3.5 w-3.5 text-[#f7cb15]" aria-hidden="true" />
+                    <span>Copied</span>
+                  </>
+                ) : (
+                  <>
+                    <Link2 className="h-3.5 w-3.5" aria-hidden="true" />
+                    <span>Copy Link</span>
+                  </>
+                )}
+              </motion.button>
             </div>
 
             <div className="absolute inset-x-6 bottom-6">
@@ -106,6 +195,34 @@ export function BlogDetailPage() {
       </MotionReveal>
 
       <SiteFooter />
+
+      {typeof document !== 'undefined' &&
+        createPortal(
+          <AnimatePresence>
+            {toastState !== 'idle' && (
+              <motion.div
+                key={toastState}
+                role={toastState === 'error' ? 'alert' : 'status'}
+                aria-live="polite"
+                initial={{ opacity: 0, y: 14, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.96 }}
+                transition={MOTION_TOKENS.springTactile}
+                className="fixed bottom-20 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2.5 whitespace-nowrap rounded-2xl border border-white/20 bg-[#121216] px-4 py-2.5 text-[13px] font-medium text-white shadow-[0_20px_50px_rgba(0,0,0,0.95)] md:bottom-8"
+              >
+                {toastState === 'copied' ? (
+                  <>
+                    <Check className="h-4 w-4 shrink-0 text-[#f7cb15]" aria-hidden="true" />
+                    <span>Link copied to clipboard</span>
+                  </>
+                ) : (
+                  <span>Unable to copy link automatically. Please copy from your address bar.</span>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
     </PageShell>
   );
 }

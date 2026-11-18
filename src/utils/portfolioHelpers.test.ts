@@ -7,6 +7,7 @@ import {
   formatReadingTime,
   getArticleWordCount,
   getBlogPostBySlug,
+  getBlogPostUrl,
   getProjectBySlug,
   normalizeRouteSection,
   validateContactForm,
@@ -107,4 +108,15 @@ test('countWords and reading time estimation compute accurate minimum 1 min read
     assert.ok(getArticleWordCount(post) > 50);
     assert.ok(estimateReadingTimeMinutes(post) >= 1);
   }
+});
+
+test('getBlogPostUrl builds normalized canonical post URL', () => {
+  assert.equal(
+    getBlogPostUrl('https://girishlade.dev/', 'designing-local-first-web-applications'),
+    'https://girishlade.dev/blog/designing-local-first-web-applications'
+  );
+  assert.equal(
+    getBlogPostUrl('http://localhost:3000', '/building-development-workflows-in-the-browser'),
+    'http://localhost:3000/blog/building-development-workflows-in-the-browser'
+  );
 });
