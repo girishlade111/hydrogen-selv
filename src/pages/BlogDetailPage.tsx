@@ -7,7 +7,11 @@ import { MotionReveal } from '../components/MotionReveal';
 import { NewsletterCard } from '../components/NewsletterCard';
 import { PageShell } from '../components/PageShell';
 import { SiteFooter } from '../components/SiteFooter';
-import { getBlogPostBySlug } from '../utils/portfolioHelpers';
+import {
+  estimateReadingTimeMinutes,
+  formatReadingTime,
+  getBlogPostBySlug,
+} from '../utils/portfolioHelpers';
 
 export function BlogDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -54,9 +58,13 @@ export function BlogDetailPage() {
             </div>
 
             <div className="absolute inset-x-6 bottom-6">
-              <p className="text-[12px] font-medium tracking-[0.04em] text-zinc-300">
-                {article.label}
-              </p>
+              <div className="flex flex-wrap items-center gap-2 text-[12px] font-medium tracking-[0.04em] text-zinc-300">
+                <span>{article.label}</span>
+                <span aria-hidden="true">·</span>
+                <span className="tabular-nums">
+                  {formatReadingTime(estimateReadingTimeMinutes(article))}
+                </span>
+              </div>
               <h1 className="mt-1.5 text-[clamp(1.7rem,4.2vw,2.3rem)] font-bold leading-[1.12] tracking-[-0.025em] text-white">
                 {article.title}
               </h1>

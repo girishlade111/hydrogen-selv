@@ -2,6 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   buildMailtoHref,
+  countWords,
+  estimateReadingTimeMinutes,
+  formatReadingTime,
+  getArticleWordCount,
   getBlogPostBySlug,
   getProjectBySlug,
   normalizeRouteSection,
@@ -76,4 +80,31 @@ test('normalizeRouteSection maps nested detail paths to top-level nav sections',
   assert.equal(normalizeRouteSection('/blog/designing-local-first-web-applications'), '/blog');
   assert.equal(normalizeRouteSection('/about'), '/about');
   assert.equal(normalizeRouteSection('/contact'), '/contact');
+});
+
+test('countWords and reading time estimation compute accurate minimum 1 min read', () => {
+  assert.equal(countWords(''), 0);
+  assert.equal(countWords('   hello   world  '), 2);
+
+  const shortArticle = {
+    title: 'Short Note',
+    summary: 'Ten words in a concise summary sentence for testing.',
+    paragraphs: [{ heading: 'Section', body: 'Five short words right here.' }],
+  };
+  assert.equal(getArticleWordCount(shortArticle), 17);
+  assert.equal(estimateReadingTimeMinutes(shortArticle), 1);
+  assert.equal(formatReadingTime(estimateReadingTimeMinutes(shortArticle)), '1 min read');
+
+  const longBody = Array.from({ length: 410 }, () => 'word').join(' ');
+  const longArticle = {
+    title: 'Long Note',
+    summary: 'Summary text.',
+    paragraphs: [{ body: longBody }],
+  };
+  assert.equal(estimateReadingTimeMinutes(longArticle), 3);
+
+  for (const post of BLOG_POSTS) {
+    assert.ok(getArticleWordCount(post) > 50);
+    assert.ok(estimateReadingTimeMinutes(post) >= 1);
+  }
 });

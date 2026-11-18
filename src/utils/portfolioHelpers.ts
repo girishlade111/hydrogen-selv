@@ -85,3 +85,36 @@ export function normalizeRouteSection(pathname: string): NavSection {
   if (pathname.startsWith('/contact')) return '/contact';
   return '/';
 }
+
+export function countWords(text: string): number {
+  const trimmed = text.trim();
+  if (!trimmed) return 0;
+  return trimmed.split(/\s+/).length;
+}
+
+export function getArticleWordCount(
+  article: Pick<BlogArticle, 'title' | 'summary' | 'paragraphs'>
+): number {
+  let total = countWords(article.title) + countWords(article.summary);
+  for (const section of article.paragraphs) {
+    if (section.heading) {
+      total += countWords(section.heading);
+    }
+    total += countWords(section.body);
+  }
+  return total;
+}
+
+export function estimateReadingTimeMinutes(
+  article: Pick<BlogArticle, 'title' | 'summary' | 'paragraphs'>,
+  wordsPerMinute = 200
+): number {
+  const words = getArticleWordCount(article);
+  if (words <= 0) return 1;
+  return Math.max(1, Math.ceil(words / wordsPerMinute));
+}
+
+export function formatReadingTime(minutes: number): string {
+  return `${minutes} min read`;
+}
+
