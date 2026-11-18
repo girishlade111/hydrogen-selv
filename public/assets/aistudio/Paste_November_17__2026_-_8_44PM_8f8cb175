@@ -1,0 +1,1416 @@
+You are a principal-level frontend engineer, full-stack developer, interaction designer, UI/UX designer, motion designer, design-systems architect, accessibility engineer, performance engineer, and QA engineer with decades of experience recreating sophisticated interfaces from visual references.
+
+Your assignment is to build a complete, production-quality, multi-page personal portfolio website for Girish Lade.
+
+THIS IS NOT A GENERIC PORTFOLIO DESIGN TASK.
+
+The attached reference screenshots are the primary visual specification. Reconstruct the visual system, page composition, proportions, spacing, typography hierarchy, dark translucent cards, background treatment, floating navigation, card radii, shadows, borders, interactions, motion behavior, responsive behavior, and overall visual rhythm as faithfully as possible from the screenshots.
+
+However, do NOT reproduce Framer promotional/advertising/attribution elements such as:
+- "Made in Framer"
+- "Powered by Framer"
+- Framer badges
+- promotional Framer buttons
+- marketplace/template promotional strips
+- advertising links
+- template-author promotional links
+- any promotional UI whose only purpose is advertising Framer or the original template
+
+The final result must be a clean, personalized portfolio for Girish Lade.
+
+======================================================================
+0. PRIMARY OBJECTIVE
+======================================================================
+
+Build a polished, fully working, responsive, multi-page portfolio website that:
+
+1. Visually reproduces the attached reference screenshots as closely as reasonably possible.
+2. Uses the reference screenshots as the visual source of truth.
+3. Replaces all template dummy content with the supplied Girish Lade portfolio content below.
+4. Extensively uses Motion for React / Framer Motion-style animation throughout the interface.
+5. Preserves the reference's dark, atmospheric, translucent, glass-like aesthetic.
+6. Works beautifully on desktop, tablet, and mobile.
+7. Uses one SINGLE STATIC BACKGROUND ARTWORK across every page.
+8. Keeps that background fixed while foreground content scrolls.
+9. Removes Framer/template promotional branding.
+10. Implements actual routing and interactions rather than creating a static mockup.
+11. Produces clean, maintainable, reusable production code.
+12. Does not invent experience, customers, revenue, awards, certifications, employers, statistics, testimonials, publication dates, or business claims.
+13. Separates visually faithful reconstruction from personal content transformation.
+14. Treats the screenshots as visual references rather than as content references.
+
+Do not redesign this website into your preferred style.
+
+Do not "improve" away the reference aesthetic.
+
+Do not turn it into a standard SaaS portfolio.
+
+Do not replace the distinctive card-driven composition with generic grids.
+
+The reference is intentional.
+
+Recreate its visual language.
+
+======================================================================
+1. REFERENCE-FIRST IMPLEMENTATION RULE
+======================================================================
+
+Before writing the final implementation, inspect EVERY supplied screenshot carefully.
+
+Build an internal visual inventory covering:
+
+- viewport width represented by each screenshot
+- maximum content-column width
+- card widths
+- card heights
+- vertical gaps
+- border radii
+- border opacity
+- glass/blur strength
+- background darkness
+- typography sizes
+- typography weights
+- line heights
+- text colors
+- muted text colors
+- accent yellow
+- button dimensions
+- input dimensions
+- content alignment
+- hero proportions
+- image proportions
+- icon dimensions
+- floating-nav geometry
+- section spacing
+- page-top spacing
+- footer spacing
+- page-bottom spacing
+- card-to-card spacing
+- card inner padding
+- background scaling
+- overlay opacity
+- image gradients
+- responsive transformations
+- hover states visible or suggested by the visual language
+
+Do not blindly hardcode arbitrary measurements.
+
+Infer measurements systematically from the screenshots and establish reusable design tokens.
+
+When an exact value cannot be determined, select the value that creates the closest screenshot match and use it consistently.
+
+Priority order when decisions conflict:
+
+1. Screenshot visual fidelity
+2. User-provided requirements in this specification
+3. Responsive usability
+4. Accessibility
+5. Maintainable architecture
+6. Your own design preference
+
+Your own taste is the lowest priority.
+
+======================================================================
+2. REQUIRED TECHNOLOGY DIRECTION
+======================================================================
+
+Use a modern React-based architecture.
+
+Preferred implementation:
+- React
+- TypeScript
+- Vite or an appropriate React framework already present in the repository
+- Motion for React via "motion/react"
+- React Router if using client-side Vite routing
+- Lucide React or another consistent lightweight icon library
+- CSS/Tailwind depending on the existing stack
+- semantic HTML
+- accessible interactive elements
+
+IMPORTANT:
+
+Do not replace Motion animations with CSS-only animations.
+
+CSS transitions may support tiny cosmetic states, but meaningful motion must be driven through Motion.
+
+If the project already has a functioning React/TypeScript toolchain, preserve it unless there is a concrete technical reason to modify it.
+
+Install only packages that are actually necessary.
+
+Keep dependencies disciplined.
+
+At minimum, ensure the project has the appropriate equivalents of:
+
+- react
+- react-dom
+- motion
+- router solution
+- icon solution
+
+If using Vite:
+- use a conventional Vite + React + TypeScript structure
+- configure SPA routing appropriately for the target host
+
+If using Next.js:
+- use the project's existing routing conventions
+- keep client-only motion components correctly isolated
+
+Do not introduce an unnecessary backend merely to make the portfolio appear "full stack."
+
+======================================================================
+3. MOTION IS A CORE DESIGN SYSTEM, NOT DECORATION
+======================================================================
+
+This website must feel motion-designed.
+
+Use Motion extensively but deliberately.
+
+The final experience should feel like an expertly produced Framer-style portfolio rather than a static HTML page with a few fade-ins.
+
+Implement a centralized motion system.
+
+Suggested motion primitives:
+
+- pageVariants
+- cardVariants
+- sectionVariants
+- staggerContainerVariants
+- staggerItemVariants
+- buttonVariants
+- navItemVariants
+- imageVariants
+- accordionVariants
+- overlayVariants
+
+Establish reusable duration/easing/spring tokens.
+
+Use appropriate combinations of:
+
+motion.*
+AnimatePresence
+whileHover
+whileTap
+whileFocus
+whileInView
+viewport
+layout
+layoutId where beneficial
+useScroll where actually justified
+useTransform where actually justified
+useMotionValue where useful
+springs for physical micro-interactions
+
+Do NOT add random movement simply because Motion is available.
+
+Motion should strengthen:
+- hierarchy
+- responsiveness
+- tactile feedback
+- navigation
+- reveal
+- expansion
+- content continuity
+- transitions
+
+======================================================================
+4. PAGE TRANSITIONS
+======================================================================
+
+Every internal route must transition smoothly.
+
+Examples:
+- current page exits subtly
+- destination enters with controlled opacity/position transition
+- route change should not cause visual flashing
+- background MUST NOT transition or reload between pages
+- only foreground/page content should change
+- maintain visual continuity between routes
+
+Avoid exaggerated full-screen cinematic transitions.
+
+The reference aesthetic is restrained and elegant.
+
+======================================================================
+5. SCROLL-REVEAL SYSTEM
+======================================================================
+
+Major cards should enter the viewport with understated motion.
+
+Possible behavior:
+- opacity 0 -> 1
+- y 16-30px -> 0
+- small scale correction such as 0.985 -> 1
+- slight blur reduction only if performant
+
+Use staggered child animations where the section contains lists.
+
+Do not repeatedly animate sections every time the user moves them a few pixels in and out of view.
+
+Use viewport settings appropriately.
+
+======================================================================
+6. CARD INTERACTIONS
+======================================================================
+
+Cards are one of the most important visual primitives.
+
+Hover-capable devices may use subtle:
+- y translation
+- scale
+- border brightening
+- shadow strengthening
+- image scaling
+- arrow translation
+- highlight movement
+
+Keep effects sophisticated and small.
+
+Avoid:
+- dramatic 3D tilt everywhere
+- glowing neon effects
+- excessive bouncing
+- random particles
+- distracting loops
+
+Cards should feel tactile and premium, not gimmicky.
+
+======================================================================
+7. BUTTON MOTION
+======================================================================
+
+Buttons should have Motion-powered:
+- hover
+- press
+- focus feedback
+
+Accent buttons should preserve the reference yellow.
+
+Dark buttons should preserve the reference's understated dark-glass treatment.
+
+Buttons must remain keyboard accessible.
+
+Do not rely on motion alone to indicate focus.
+
+======================================================================
+8. FLOATING NAVIGATION
+======================================================================
+
+The screenshots show a slim floating vertical navigation rail positioned near the viewport edge.
+
+Reconstruct that visual style.
+
+The rail should:
+- remain fixed to the viewport
+- use dark translucent glass
+- have rounded/pill geometry
+- have a subtle border
+- use monochrome icons
+- show the active route
+- animate the active indicator
+- expose accessible labels/tooltips
+- navigate correctly
+
+Suggested routes represented by icons:
+
+Home
+Projects
+Blog
+About
+Contact
+
+Choose visually appropriate Lucide icons.
+
+The active icon should receive a slightly brighter or filled circular treatment similar to the reference.
+
+Use Motion layout/layoutId for the active-nav indicator where useful.
+
+IMPORTANT MOBILE RULE:
+
+The desktop floating rail must not simply be squeezed into the mobile viewport.
+
+On narrow screens:
+- adapt it into a compact floating bottom navigation or another screenshot-consistent mobile treatment
+- preserve all five destinations
+- protect content from overlap
+- support safe-area-inset-bottom
+- maintain comfortable touch targets
+
+======================================================================
+9. FIXED SITE BACKGROUND: CRITICAL REQUIREMENT
+======================================================================
+
+The uploaded screenshots contain an artifact.
+
+The original reference uses a static atmospheric background, but the long screenshot capture caused the background to appear duplicated/repeated vertically.
+
+DO NOT RECREATE THAT DUPLICATION.
+
+DO NOT tile the screenshot background.
+
+DO NOT repeat a background vertically.
+
+Instead:
+
+Create or source/create ONE original static background artwork inspired by the visible atmosphere in the reference.
+
+The desired visual direction:
+
+- cinematic coastal or lakeside landscape
+- tall grass/reed silhouette in the foreground
+- distant water/horizon
+- subdued dusk/dawn atmosphere
+- muted mauve/gray/taupe tones
+- low saturation
+- dark foreground
+- highly subdued detail
+- no text
+- no logos
+- no people required
+- designed to sit behind black/translucent content
+- not visually busy
+- approximately similar tonal balance to the screenshots
+
+Prefer creating a new original background asset rather than copying the exact reference photograph.
+
+The generated background must:
+- be saved as a local project asset
+- be reusable across ALL routes
+- be served locally in the portfolio
+- not depend on an external hotlink
+- not scroll with the content
+
+Implement the background as a fixed site layer.
+
+Conceptually:
+
+.viewport-background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: negative/background layer;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+Do not blindly copy the CSS above if the architecture requires another implementation.
+
+THE BEHAVIOR IS WHAT MATTERS.
+
+Add controlled overlays to reproduce the screenshot:
+- dark overlay
+- slight neutral/mauve tint
+- optional very mild blur/softening
+- perhaps an extremely subtle vignette
+
+The background should remain visually quieter than foreground content.
+
+CRITICAL:
+
+The background stays fixed while:
+- cards move
+- sections scroll
+- text scrolls
+- images scroll
+- forms scroll
+
+Do not create parallax unless tiny and clearly compatible with the reference.
+
+The requirement is a visually STATIC environmental background.
+
+======================================================================
+10. BACKGROUND PERFORMANCE
+======================================================================
+
+Do not apply an enormous runtime blur filter to a huge image if it causes GPU jank.
+
+Prefer:
+- pre-softened background asset
+- optimized WebP/AVIF if supported
+- dark overlay
+- static compositing
+
+Ensure the background does not cause large repaint costs during scrolling.
+
+Provide appropriate image sizing to avoid loading an unnecessarily huge source on small devices.
+
+======================================================================
+11. CORE VISUAL SYSTEM
+======================================================================
+
+Reconstruct the reference's overall visual language:
+
+Base palette:
+- deep black
+- charcoal
+- translucent warm-black surfaces
+- white primary text
+- gray secondary text
+- subdued borders
+- yellow CTA accent
+- muted mauve atmospheric background
+
+Do not introduce:
+- bright blue brand accents
+- purple gradients
+- generic SaaS gradients
+- colorful glass cards
+- random neon colors
+
+unless a project image itself uses those colors.
+
+======================================================================
+12. GLASS CARD SYSTEM
+======================================================================
+
+Build reusable surface/card primitives.
+
+The reference cards look closer to dark translucent frosted panels than conventional light glassmorphism.
+
+Target characteristics:
+- very dark transparent surface
+- backdrop blur
+- slightly warm tint where appropriate
+- subtle translucent border
+- subdued inset highlight
+- large rounded corners
+- soft black shadow
+- clear separation from background without looking like solid flat boxes
+
+Create reusable variants such as:
+
+GlassCard
+GlassCardDense
+GlassCardHero
+GlassCardInteractive
+GlassCardFooter
+
+Do not duplicate styling independently on every route.
+
+======================================================================
+13. TYPOGRAPHY
+======================================================================
+
+Reproduce the typography visually rather than choosing a dramatically different font.
+
+The reference uses a contemporary neutral sans-serif appearance.
+
+Use the closest legally available/open font or a high-quality system stack if the exact typeface cannot be identified.
+
+Typography characteristics:
+- strong large white headings
+- compact body type
+- high contrast
+- muted gray metadata
+- bold hero typography
+- clean sans-serif
+- restrained tracking
+- comfortable line-height
+- no serif styling
+- no decorative display font
+
+Establish fluid type sizing with clamp() where useful.
+
+Suggested hierarchy:
+- Hero display
+- Page title
+- Section title
+- Card title
+- Body
+- Small body
+- Caption/meta
+- Button label
+
+Do not make mobile typography simply shrink proportionally until unreadable.
+
+Reflow typography intelligently.
+
+======================================================================
+14. CONTENT COLUMN
+======================================================================
+
+The screenshots use a deliberately narrow centered column on large desktop canvases.
+
+Preserve this.
+
+Desktop:
+- narrow/medium central column
+- substantial empty visual space around it
+- floating navigation near viewport edge
+
+Do not stretch the interface to 1200-1400px just because desktop screens are wide.
+
+The narrow editorial/card-stack appearance is essential.
+
+Tablet:
+- allow moderate width growth where appropriate
+- maintain card proportions
+
+Mobile:
+- use nearly full available width
+- preserve 16-20px viewport gutters
+- no horizontal scrolling
+
+======================================================================
+15. BORDER RADIUS
+======================================================================
+
+The card radius is a signature detail.
+
+Use large consistent rounding on major cards.
+
+Smaller controls:
+- medium rounded rectangles
+- pill-like buttons where appropriate
+- rounded inputs
+
+Avoid inconsistent random radius values.
+
+Centralize radii as design tokens.
+
+======================================================================
+16. SPACING
+======================================================================
+
+Spacing must be systematic.
+
+Create tokens for:
+- xs
+- sm
+- md
+- lg
+- xl
+- 2xl
+- section gap
+- card padding
+- page top/bottom spacing
+
+Match screenshots before inventing values.
+
+The design uses:
+- tight relationships between stacked cards
+- generous inner card padding
+- large enough breathing room around headings
+- controlled narrow-column rhythm
+
+======================================================================
+17. REQUIRED ROUTES
+======================================================================
+
+This is a MULTI-PAGE WEBSITE.
+
+At minimum implement:
+
+/
+ /projects
+ /projects/:slug
+ /blog
+ /blog/:slug
+ /about
+ /contact
+
+Optional additions are allowed only when they improve the content architecture without compromising visual fidelity:
+ /skills
+
+Do not implement the required pages as anchors on one giant homepage.
+
+Actual route changes are required.
+
+======================================================================
+18. SHARED SITE COMPONENTS
+======================================================================
+
+Create reusable components for:
+
+SiteBackground
+PageShell
+FloatingNavigation
+MobileNavigation
+BackButton
+GlassCard
+SectionHeading
+ProjectCard
+BlogCard
+NewsletterCard
+ConnectCard
+SocialLinks
+SiteFooter
+MotionReveal
+AnimatedButton
+ContactForm
+Accordion
+MetricCard or PhilosophyCard
+ProjectDetailSection
+PageTransition
+
+The page-specific layout may compose these primitives differently.
+
+======================================================================
+19. HOMEPAGE: STRUCTURAL REFERENCE
+======================================================================
+
+The homepage corresponds to the supplied long home screenshot.
+
+Preserve its stacked card rhythm.
+
+Recommended composition:
+
+1. Identity/Hero Card
+2. Featured Work / Portfolio Preview
+3. Optional project announcement or short positioning strip
+4. Services / Capabilities Card
+5. Philosophy / Quote Card
+6. Blog Preview Card
+7. Signature highlight/stat-like card WITHOUT fabricated metrics
+8. Newsletter Card
+9. Connect Card
+10. Footer
+
+IMPORTANT:
+
+Do NOT display the original template person's identity.
+
+Use:
+
+Eyebrow:
+DEVELOPER & PRODUCT DESIGNER
+
+Name:
+Girish Lade
+
+Location:
+Pune, Maharashtra, India
+
+Professional headline:
+UI/UX Designer · Full-Stack Developer · Founder of LadeStack
+
+Supporting positioning:
+Engineer by training. Product builder by choice.
+
+Primary positioning statement:
+Building useful software with thoughtful design.
+
+Short body:
+I'm Girish, a UI/UX designer and full-stack developer building LadeStack, a growing collection of accessible, privacy-conscious developer tools and practical web applications.
+
+Primary CTA:
+Explore My Work
+
+Secondary CTA:
+About Me
+
+The hero should visually preserve the compact card-based reference layout.
+
+If a portrait image of Girish is NOT supplied, do NOT invent a fake portrait.
+
+Instead:
+- use an abstract personal-brand visual
+- use a typographic composition
+- or keep a tasteful placeholder architecture that can later accept a real /assets/profile image
+
+Do not use an unrelated stock face.
+
+======================================================================
+20. FEATURED WORK HOMEPAGE CARD
+======================================================================
+
+The reference homepage includes a portfolio preview card with overlapping imagery.
+
+Adapt the visual treatment for Girish's work.
+
+Feature a small curated subset such as:
+
+GB Coder
+LS PDF / MD2PDF
+LadeStack
+
+Use available real project screenshots if supplied.
+
+If real assets are unavailable:
+- use understated project-specific generated visual placeholders
+- make them easy to replace
+- do not fabricate screenshots representing nonexistent features
+
+CTA:
+View Projects
+
+The CTA must navigate to /projects.
+
+Use Motion for:
+- image reveal
+- hover
+- overlapping card response
+- CTA transition
+
+======================================================================
+21. CAPABILITIES CARD
+======================================================================
+
+Recreate the screenshot's compact stacked service pills.
+
+Use truthful categories such as:
+
+UI/UX & Interface Design
+Frontend Development
+Full-Stack Product Prototyping
+Developer Tooling
+AI Integration
+Technical SEO & Localization
+
+Possible interaction:
+- expanding capability pills
+- subtle hover expansion
+- icon/plus rotation
+- AnimatePresence for supplemental text
+
+Do not make this visually larger than necessary.
+
+======================================================================
+22. PHILOSOPHY / QUOTE CARD
+======================================================================
+
+The original screenshot includes a testimonial-looking block.
+
+DO NOT fabricate a client testimonial.
+
+Replace that slot with a real personal philosophy quotation.
+
+For example:
+
+"Useful software. Thoughtful design. Fewer barriers."
+
+or:
+
+"I build products that are approachable, thoughtfully designed, and worth returning to."
+
+Attribute it clearly to:
+Girish Lade
+Founder, LadeStack
+
+Do not create fictional client avatars.
+
+If the reference uses overlapping circular visuals, reinterpret them as:
+- technology icons
+- product thumbnails
+- visual dots
+- brand marks
+
+instead of fake clients.
+
+======================================================================
+23. SIGNATURE HIGHLIGHT CARD
+======================================================================
+
+The screenshot contains a large "75%" type statistical section.
+
+DO NOT copy "75%".
+
+There is no verified personal business metric supporting it.
+
+Preserve the composition without the unsupported number.
+
+Possible adaptation:
+
+Large text:
+BUILD
+or
+USEFUL
+or
+IDEA → PRODUCT
+
+Small heading:
+Product Philosophy
+
+Supporting text:
+Useful software. Thoughtful design. Fewer barriers.
+
+Alternative body:
+Good software should be useful, understandable, and respectful of the people who use it.
+
+Preserve the dramatic centered visual hierarchy and glowy atmospheric image treatment without adding fake numbers.
+
+======================================================================
+24. PROJECTS PAGE
+======================================================================
+
+The /projects page must visually follow the supplied Projects screenshot.
+
+Page structure:
+- top title card with back button
+- vertically stacked large project cards
+- fixed floating navigation
+- newsletter card
+- connect card
+- footer
+
+The reference shows only a handful of huge cards.
+
+For Girish's portfolio, retain the same large-card visual style and include the verified/described projects below.
+
+Primary projects:
+
+1. LadeStack
+URL:
+https://ladestack.in/
+
+Short description:
+A developer-friendly home for browser-first utilities, product documentation, and practical software.
+
+Category:
+Developer ecosystem / Product platform
+
+2. GB Coder
+URL:
+https://code.ladestack.in/
+
+Short description:
+A Monaco-based browser IDE for static web prototyping and compatible Node.js/WebContainer workflows.
+
+Technologies / themes:
+Monaco Editor
+TypeScript
+WebContainers
+IndexedDB
+browser execution
+ZIP export
+
+3. LS PDF
+URL:
+https://pdf.ladestack.in/
+
+Short description:
+A local-first toolkit for editing, organizing, converting, and processing PDF documents.
+
+Technologies / themes:
+React
+TypeScript
+Vite
+PDF.js
+pdf-lib
+JSZip
+Web Workers
+IndexedDB
+
+4. MD2PDF
+URL:
+https://md2pdf.ladestack.in/
+
+Short description:
+Turn Markdown and repository documentation into polished PDFs and organized document books.
+
+Themes:
+Markdown
+GitHub-Flavored Markdown
+KaTeX
+PDF
+GitHub content
+IndexedDB
+
+5. Bharat Land Converter
+URL:
+https://land.ladestack.in/
+
+Short description:
+Compare standard and regional Indian land-area units through a region-aware conversion interface.
+
+6. Swift Resume
+URL:
+https://resume.ladestack.in/
+
+Short description:
+Create structured, recruiter-friendly resumes with live preview and PDF export.
+
+7. LS Image Compressor
+URL:
+https://img.ladestack.in/
+
+Short description:
+Resize, optimize, and convert images through a privacy-conscious browser workflow.
+
+8. GameHub
+URL:
+https://games-ladestack.vercel.app/
+
+Short description:
+A browser-based collection of small interactive games.
+
+9. LadeStack Drive
+URL:
+https://drive.ladestack.in/
+
+IMPORTANT:
+The exact current production functionality of LadeStack Drive has not been verified in the supplied profile.
+
+If included, label it safely as:
+"Experimental / Verification Pending"
+
+Description:
+File-management project. Exact production functionality requires verification.
+
+Do not claim:
+- verified sharing
+- encryption
+- cloud sync
+- authentication
+- persistent storage
+unless separately confirmed.
+
+======================================================================
+25. PROJECT CARD VISUAL BEHAVIOR
+======================================================================
+
+Large project card format:
+- large rounded image
+- title anchored near lower-left
+- directional arrow near lower-right
+- dark gradient near bottom for title contrast
+- overflow hidden
+- image fills card
+- card matches reference proportions
+
+Hover:
+- image scale approximately 1 -> 1.025
+- title subtle translation
+- arrow shifts slightly right/up
+- border/shadow responds
+- spring-based motion
+
+Tap:
+- scale down subtly
+- navigate to /projects/:slug or external live project depending on interaction architecture
+
+Preferred behavior:
+Clicking the main visual/card opens the internal portfolio case-study page.
+Provide an explicit "Visit Project" link inside the detail page.
+
+======================================================================
+26. PROJECT DETAIL PAGES
+======================================================================
+
+Create internal detail routes for portfolio projects.
+
+Examples:
+/projects/ladestack
+/projects/gb-coder
+/projects/ls-pdf
+/projects/md2pdf
+/projects/bharat-land-converter
+/projects/swift-resume
+/projects/ls-image-compressor
+/projects/gamehub
+/projects/ladestack-drive
+
+Use a consistent reference-derived layout rather than inventing a totally new design.
+
+Recommended structure:
+1. Hero image/title card
+2. Overview card
+3. Three use-case cards/sections where verified content exists
+4. Technology/focus card
+5. External links
+6. Newsletter
+7. Connect
+8. Footer
+
+Do not fabricate missing technical details.
+
+======================================================================
+27. SAFE PROJECT CONTENT
+======================================================================
+
+Use these truthful descriptions.
+
+LADESTACK
+
+Overview:
+LadeStack is Girish Lade's independent software product brand and a home for developer utilities, creative productivity tools, and practical browser-based applications. The portfolio content describes an emphasis on browser-first access, useful free tooling, clear interfaces, and local processing where technically practical.
+
+Role:
+Founder, product direction, design, development and maintenance.
+
+Do not describe LadeStack as an incorporated company unless independently confirmed.
+
+
+GB CODER
+
+Overview:
+GB Coder is a browser-based development studio for writing, editing, previewing, and experimenting with web applications. Its documented direction includes a lightweight HTML/CSS/JavaScript workflow and a WebContainer-powered environment for compatible Node.js-oriented development.
+
+Use cases:
+- prototype web interfaces without local setup
+- experiment with compatible framework projects in the browser
+- maintain/export portable learning projects
+
+Do not claim universal desktop-environment compatibility.
+
+
+LS PDF
+
+Overview:
+LS PDF is a browser-oriented PDF utility suite designed around practical document operations while minimizing unnecessary server-side handling where local processing is practical.
+
+Use cases:
+- organize everyday PDFs
+- prepare documents for sharing and archiving
+- handle appropriate document operations locally
+
+Do not claim external certification or audited encryption.
+
+
+MD2PDF
+
+Overview:
+MD2PDF is a Markdown publishing tool for transforming Markdown and compatible repository documentation into readable PDF documents.
+
+Use cases:
+- convert technical notes/README-style content into PDF
+- assemble multi-file documentation
+- create consistent technical or academic documents
+
+Do not imply every workflow is completely offline if it explicitly fetches GitHub content.
+
+
+BHARAT LAND CONVERTER
+
+Overview:
+A browser-based tool for comparing common standard land-area measurements with regional Indian units.
+
+Important:
+Traditional units can vary by region.
+
+Never market conversion output as an official legal land survey.
+
+
+SWIFT RESUME
+
+Overview:
+A browser-based structured resume builder designed around responsive form editing, live preview, template-based presentation, local draft persistence, and PDF output.
+
+Do not say:
+"Guaranteed to pass ATS."
+
+Instead:
+"Designed with readable, recruiter-friendly formatting."
+
+
+LS IMAGE COMPRESSOR
+
+Overview:
+A browser-based image optimization tool for resizing, compressing, and converting supported images with an emphasis on client-side processing.
+
+Do not make absolute security claims.
+
+
+GAMEHUB
+
+Overview:
+An interactive browser-game project built to provide quick access to a variety of lightweight games and demonstrate frontend interaction patterns.
+
+The supplied profile references a repository-documented collection of 33 games.
+
+If using the number 33, make the wording:
+"Repository-documented collection of 33 games."
+
+Do not convert that into a live-user or engagement metric.
+
+
+LADESTACK DRIVE
+
+Overview:
+A file-management project associated with Girish Lade's storage and file-workflow experimentation.
+
+Status:
+Experimental / Verification Pending.
+
+Do not expand this into unverified functionality.
+
+======================================================================
+28. BLOG PAGE
+======================================================================
+
+The /blog page should visually reproduce the supplied Blog screenshot.
+
+Structure:
+- title card with back button
+- large dark card containing vertical article list
+- each article row has thumbnail, title, and metadata
+- newsletter
+- connect
+- footer
+
+IMPORTANT:
+
+The source material does NOT establish a verified catalogue of published personal blog posts matching the dummy Framer articles.
+
+Therefore:
+
+DO NOT present the screenshot's dummy article names as Girish's real publication history.
+
+Create clearly labeled portfolio writing topics such as:
+"Notes & Writing"
+or
+"Selected Technical Writing"
+
+Possible article topics derived from Girish's real areas of practice:
+
+- Designing Local-First Web Applications
+- Building Development Workflows in the Browser
+- Designing Useful Documentation Systems
+- AI Assistance Without Losing User Control
+- Shipping Discoverable Multilingual Websites
+- Building Browser-First Developer Tools
+- Practical Privacy Boundaries in Client-Side Apps
+
+If these are newly authored portfolio essays rather than historically published articles:
+DO NOT fabricate old publication dates.
+
+You may omit dates or use:
+"Portfolio Note"
+"Technical Note"
+
+======================================================================
+29. BLOG DETAIL PAGE
+======================================================================
+
+Use the supplied reference Blog Detail screenshot.
+
+Visual structure:
+- large visual hero card
+- back button overlay
+- article title at bottom of hero
+- body text in separate dark glass card
+- newsletter
+- connect
+- footer
+- floating navigation
+
+Create actual readable technical portfolio articles based on Girish's known interests.
+
+Do not use filler lorem ipsum.
+
+Sample article:
+"Designing Local-First Web Applications"
+
+Possible factual themes:
+- browser-local persistence improves onboarding/data control
+- IndexedDB and browser storage have lifecycle limitations
+- users should be able to export important data
+- local-first does not eliminate every privacy/security consideration
+- external APIs create their own data boundaries
+
+Write useful original content.
+
+Do not invent experiments, benchmarks, customers, dates, metrics, or results.
+
+======================================================================
+30. ABOUT PAGE
+======================================================================
+
+The /about page must preserve the supplied About page's visual composition.
+
+Reference structure:
+1. portrait-style hero
+2. introduction card
+3. work/experience-style accordion
+4. highlight card
+5. newsletter
+6. connect
+7. footer
+
+Adapt carefully for Girish.
+
+Because verified employment history is NOT established sufficiently for made-up corporate roles, DO NOT create fictional work experience.
+
+Instead transform the accordion to:
+
+"Journey & Practice"
+
+Possible rows:
+
+Mechanical Engineering Foundation
+
+Description:
+Formal education and study in Mechanical Engineering shaped a systems-oriented approach to constraints, trade-offs, practical problem solving, and iteration.
+
+UI/UX & Product Design
+
+Description:
+Focus on responsive interfaces, information architecture, typography, interaction design, accessibility, and clear workflows.
+
+Full-Stack Development
+
+Description:
+Work spans React, TypeScript, Node.js-oriented application development, frontend architecture, APIs, browser storage, authentication patterns, databases, and deployment workflows.
+
+Browser-First Tools
+
+Description:
+Interest in Monaco Editor, WebContainers, IndexedDB, Web Workers, Canvas, local processing, portable outputs, and browser-native software.
+
+AI-Assisted Engineering
+
+Description:
+Exploration of coding agents, model APIs, BYOK architectures, multi-provider systems, review workflows, and responsible AI-assisted development.
+
+LadeStack
+
+Description:
+Independent product ecosystem focused on useful developer and productivity tools.
+
+Use AnimatePresence for accordion expansion.
+
+======================================================================
+31. ABOUT HERO CONTENT
+======================================================================
+
+Name:
+Girish Lade
+
+Headline:
+Engineer by training. Product builder by choice.
+
+Short bio:
+I'm Girish Balaso Lade, an independent developer and product designer based in Pune, India. My academic path began in Mechanical Engineering, while my professional curiosity took me into web development, interaction design, AI-assisted software creation, and browser-native computing.
+
+Extended About copy:
+
+I'm an engineer by education and a software product builder by choice.
+
+My background in Mechanical Engineering shaped how I approach problems: identify constraints, understand the system, simplify the process, and iterate until the result becomes dependable.
+
+Over time, that problem-solving mindset found a new outlet in software engineering, UI/UX design, and product architecture.
+
+Today, I design and develop modern websites, full-stack applications, browser-based utilities, and experimental AI-powered developer tools.
+
+My work spans the experience users see, including information architecture, visual systems, responsive interaction, and accessibility, as well as the systems behind those experiences.
+
+I started LadeStack around a simple belief: everyday software should be useful before it is complicated.
+
+I enjoy turning rough ideas into working product experiences by moving between research, interface design, implementation, debugging, documentation, SEO, and deployment.
+
+I explore AI coding agents and multi-model workflows as development accelerators rather than substitutes for verification, architecture, or user-centered thinking.
+
+======================================================================
+32. EDUCATION CONTENT
+======================================================================
+
+If education appears:
+
+Diploma in Mechanical Engineering
+Fabtech Technical Campus
+Previously described as completed in 2021
+
+Mechanical Engineering studies
+SVERI's College of Engineering, Pandharpur
+
+IMPORTANT:
+Do NOT claim that a B.Tech degree was completed unless separately confirmed.
+
+Do NOT invent:
+- marks
+- grades
+- awards
+- school names
+- university graduation date
+- Computer Science degree
+
+Mechanical Engineering is the correct background for this portfolio.
+
+======================================================================
+33. CONTACT PAGE
+======================================================================
+
+Reconstruct the supplied Contact screenshot carefully.
+
+Structure:
+1. large title card:
+   "Get in touch"
+2. contact form card
+3. FAQ card
+4. newsletter
+5. connect
+6. footer
+7. floating navigation
+
+Form fields:
+Name
+Email
+Message
+
+Button:
+Send Message
+
+Form requirements:
+- accessible labels
+- client-side validation
+- required fields
+- valid email check
+- loading state
+- success state
+- failure state
+- keyboard accessibility
+- clear focus states
+
+Do not pretend a message was delivered if no backend/email integration exists.
+
+If no form backend is configured:
+- prefer a graceful mailto fallback
+OR
+- show honest UI indicating that the user's email application can be opened
+OR
+- implement a documented adapter interface for adding a provider later
+
+Do not silently discard form submissions.
+
+Default target:
+admin@ladestack.in
+
+======================================================================
+34. CONTACT FAQ
+======================================================================
+
+Do NOT use the original template's fictional pricing and agency answers.
+
+Use truthful portfolio-oriented questions.
+
+Suggested questions:
+
+Q:
+What kind of projects do you enjoy working on?
+
+A:
+Developer tools, browser-based utilities, thoughtful web products, AI-assisted workflows, and practical productivity software are recurring areas of interest.
+
+Q:
+What technologies do you work with?
+
+A:
+My projects commonly involve React, TypeScript, Astro, Next.js, browser APIs, Node.js-oriented application development, client-side storage, document processing, and modern deployment workflows.
+
+Q:
+Are you open to collaborations?
+
+A:
+I'm interested in discussing useful products, developer experience, UI/UX, web engineering, and practical software ideas. Reach out with context about the project.
+
+Animate FAQ expansion using Motion.
+
+======================================================================
+35. NEWSLETTER CARD
+======================================================================
+
+The screenshots repeatedly show:
+
+"From my desk
+to your inbox."
+
+Preserve this wording if desired because it fits the reference and portfolio direction.
+
+But do not fake a working newsletter.
+
+Options:
+
+If no provider is configured:
+- retain the email field visually
+- label 
