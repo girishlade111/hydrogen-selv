@@ -26,6 +26,8 @@ export interface BlogArticle {
   slug: string;
   title: string;
   label: string;
+  category: string;
+  tags: string[];
   summary: string;
   coverImage: string;
   coverAlt: string;
@@ -579,6 +581,8 @@ export const BLOG_POSTS: BlogArticle[] = [
     slug: 'designing-local-first-web-applications',
     title: 'Designing Local-First Web Applications',
     label: 'Technical Note',
+    category: 'Web Architecture',
+    tags: ['local-first', 'browser-first', 'indexeddb', 'privacy', 'portability'],
     summary:
       'Why browser-local persistence lowers onboarding friction—and why portability, storage limits, and clear data boundaries matter just as much.',
     coverImage: SITE_ASSETS.blogLight,
@@ -605,6 +609,8 @@ export const BLOG_POSTS: BlogArticle[] = [
     slug: 'building-development-workflows-in-the-browser',
     title: 'Building Development Workflows in the Browser',
     label: 'Technical Note',
+    category: 'Developer Tooling',
+    tags: ['browser-first', 'developer-tools', 'webcontainers', 'monaco-editor', 'portability'],
     summary:
       'Lessons from combining Monaco Editor, sandboxed previews, and WebContainers while communicating browser runtime constraints honestly.',
     coverImage: SITE_ASSETS.ideStudio,
@@ -627,6 +633,8 @@ export const BLOG_POSTS: BlogArticle[] = [
     slug: 'designing-useful-documentation-systems',
     title: 'Designing Useful Documentation Systems',
     label: 'Technical Note',
+    category: 'Developer Tooling',
+    tags: ['documentation', 'markdown', 'pdf', 'developer-tools', 'portability'],
     summary:
       'Why Markdown-to-PDF publishing involves far more than file conversion: sanitization, math typesetting, print layouts, and multi-chapter structure.',
     coverImage: SITE_ASSETS.pdfEditorial,
@@ -649,6 +657,8 @@ export const BLOG_POSTS: BlogArticle[] = [
     slug: 'ai-assistance-without-losing-user-control',
     title: 'AI Assistance Without Losing User Control',
     label: 'Technical Note',
+    category: 'AI & Engineering',
+    tags: ['ai-workflows', 'byok', 'developer-tools', 'privacy', 'verification'],
     summary:
       'Approaching AI coding agents and BYOK architectures as transparent engineering accelerators rather than opaque replacements for review.',
     coverImage: SITE_ASSETS.brandArt,
@@ -671,6 +681,8 @@ export const BLOG_POSTS: BlogArticle[] = [
     slug: 'shipping-discoverable-multilingual-websites',
     title: 'Shipping Discoverable Multilingual Websites',
     label: 'Technical Note',
+    category: 'Web Architecture',
+    tags: ['astro', 'technical-seo', 'localization', 'static-sites', 'documentation'],
     summary:
       'Structuring static Astro sites with semantic HTML, canonical URLs, hreflang metadata, and deliberate localized content.',
     coverImage: SITE_ASSETS.systemsGrid,

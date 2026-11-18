@@ -124,3 +124,53 @@ export function getBlogPostUrl(origin: string, slug: string): string {
   return `${cleanOrigin}/blog/${cleanSlug}`;
 }
 
+export function getSharedPostTags(
+  currentPost: Pick<BlogArticle, 'tags'>,
+  candidatePost: Pick<BlogArticle, 'tags'>
+): string[] {
+  const candidateTagSet = new Set(candidatePost.tags.map((tag) => tag.trim().toLowerCase()));
+  const seen = new Set<string>();
+  const shared: string[] = [];
+
+  for (const tag of currentPost.tags) {
+    const normalized = tag.trim().toLowerCase();
+    if (normalized && candidateTagSet.has(normalized) && !seen.has(normalized)) {
+      seen.add(normalized);
+      shared.push(tag);
+    }
+  }
+
+  return shared;
+}
+
+export function getRelatedBlogPosts(
+  currentPost: BlogArticle,
+  allPosts: BlogArticle[] = BLOG_POSTS,
+  limit = 2
+): BlogArticle[] {
+  if (limit <= 0) return [];
+
+  const currentCategory = currentPost.category.trim().toLowerCase();
+
+  return allPosts
+    .map((post, index) => {
+      if (post.slug === currentPost.slug) {
+        return null;
+      }
+      const sharedTags = getSharedPostTags(currentPost, post);
+      const sameCategory =
+        currentCategory.length > 0 && post.category.trim().toLowerCase() === currentCategory;
+      const score = sharedTags.length + (sameCategory ? 2 : 0);
+
+      return { post, score, index };
+    })
+    .filter((entry): entry is { post: BlogArticle; score: number; index: number } => entry !== null)
+    .sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+      return a.index - b.index;
+    })
+    .slice(0, limit)
+    .map((entry) => entry.post);
+}

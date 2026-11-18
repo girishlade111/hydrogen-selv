@@ -9,11 +9,13 @@ import {
   getBlogPostBySlug,
   getBlogPostUrl,
   getProjectBySlug,
+  getRelatedBlogPosts,
+  getSharedPostTags,
   normalizeRouteSection,
   validateContactForm,
   validateNewsletterEmail,
 } from './portfolioHelpers';
-import { PROJECTS, BLOG_POSTS } from '../data/portfolio';
+import { PROJECTS, BLOG_POSTS, type BlogArticle } from '../data/portfolio';
 
 test('validateContactForm rejects empty and invalid inputs', () => {
   const emptyResult = validateContactForm({ name: '', email: '', message: '' });
@@ -119,4 +121,38 @@ test('getBlogPostUrl builds normalized canonical post URL', () => {
     getBlogPostUrl('http://localhost:3000', '/building-development-workflows-in-the-browser'),
     'http://localhost:3000/blog/building-development-workflows-in-the-browser'
   );
+});
+
+test('getRelatedBlogPosts suggests two other posts prioritized by category and tag overlap', () => {
+  for (const post of BLOG_POSTS) {
+    const related = getRelatedBlogPosts(post, BLOG_POSTS, 2);
+    assert.equal(related.length, 2);
+    assert.ok(related.every((candidate) => candidate.slug !== post.slug));
+    assert.notEqual(related[0].slug, related[1].slug);
+  }
+
+  const makePost = (slug: string, category: string, tags: string[]): BlogArticle => ({
+    slug,
+    title: slug,
+    label: 'Technical Note',
+    category,
+    tags,
+    summary: 'Summary',
+    coverImage: '/img.jpg',
+    coverAlt: 'Alt',
+    paragraphs: [{ body: 'Body' }],
+  });
+
+  const target = makePost('target', 'Web Architecture', ['local-first', 'indexeddb', 'privacy']);
+  const highMatch = makePost('high-match', 'Web Architecture', ['LOCAL-FIRST', 'privacy']);
+  const tagOnlyMatch = makePost('tag-only', 'Developer Tooling', ['local-first', 'indexeddb']);
+  const noMatch = makePost('no-match', 'Other', ['unrelated']);
+
+  const ranked = getRelatedBlogPosts(target, [target, noMatch, tagOnlyMatch, highMatch], 2);
+  assert.deepEqual(
+    ranked.map((p) => p.slug),
+    ['high-match', 'tag-only']
+  );
+  assert.deepEqual(getSharedPostTags(target, highMatch), ['local-first', 'privacy']);
+  assert.deepEqual(getRelatedBlogPosts(target, [target], 2), []);
 });

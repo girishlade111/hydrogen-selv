@@ -5,18 +5,22 @@ import { createPortal } from 'react-dom';
 import { useParams } from 'react-router-dom';
 import { AnimatedButton } from '../components/AnimatedButton';
 import { BackButton } from '../components/BackButton';
+import { BlogCard } from '../components/BlogCard';
 import { ConnectCard } from '../components/ConnectCard';
 import { GlassCard, GlassCardHero } from '../components/GlassCard';
 import { MotionReveal } from '../components/MotionReveal';
 import { NewsletterCard } from '../components/NewsletterCard';
 import { PageShell } from '../components/PageShell';
 import { SiteFooter } from '../components/SiteFooter';
+import { BLOG_POSTS } from '../data/portfolio';
 import { MOTION_TOKENS } from '../motion/variants';
 import {
   estimateReadingTimeMinutes,
   formatReadingTime,
   getBlogPostBySlug,
   getBlogPostUrl,
+  getRelatedBlogPosts,
+  getSharedPostTags,
 } from '../utils/portfolioHelpers';
 
 export function BlogDetailPage() {
@@ -104,6 +108,8 @@ export function BlogDetailPage() {
     );
   }
 
+  const relatedPosts = getRelatedBlogPosts(article, BLOG_POSTS, 2);
+
   return (
     <PageShell>
       {/* 1. Large Visual Hero Card matching Blog Detail screenshot */}
@@ -150,6 +156,8 @@ export function BlogDetailPage() {
               <div className="flex flex-wrap items-center gap-2 text-[12px] font-medium tracking-[0.04em] text-zinc-300">
                 <span>{article.label}</span>
                 <span aria-hidden="true">·</span>
+                <span>{article.category}</span>
+                <span aria-hidden="true">·</span>
                 <span className="tabular-nums">
                   {formatReadingTime(estimateReadingTimeMinutes(article))}
                 </span>
@@ -182,9 +190,59 @@ export function BlogDetailPage() {
                 <p className="text-[14.5px] leading-[1.7] text-zinc-300">{section.body}</p>
               </section>
             ))}
+
+            {article.tags.length > 0 && (
+              <>
+                <div className="mt-1 h-px bg-white/[0.08]" />
+                <p className="font-mono text-[12px] leading-relaxed text-zinc-400">
+                  <span className="text-zinc-500">Topics: </span>
+                  {article.tags.join(' · ')}
+                </p>
+              </>
+            )}
           </article>
         </GlassCard>
       </MotionReveal>
+
+      {/* 3. Related Posts */}
+      {relatedPosts.length > 0 && (
+        <MotionReveal>
+          <GlassCard className="p-6 sm:p-7">
+            <section aria-labelledby="related-posts-heading">
+              <div className="flex flex-col gap-1">
+                <h2
+                  id="related-posts-heading"
+                  className="text-[18px] font-semibold leading-[1.3] tracking-[-0.015em] text-white"
+                >
+                  Related Posts
+                </h2>
+                <p className="text-[13.5px] leading-relaxed text-zinc-400">
+                  More technical notes connected by shared topics or category.
+                </p>
+              </div>
+
+              <div className="mt-4 flex flex-col gap-3">
+                {relatedPosts.map((related) => {
+                  const sharedTags = getSharedPostTags(article, related);
+                  const readLabel = formatReadingTime(estimateReadingTimeMinutes(related));
+                  const metaParts = [related.category, readLabel];
+                  if (sharedTags.length > 0) {
+                    metaParts.push(`Shared: ${sharedTags.slice(0, 2).join(', ')}`);
+                  }
+
+                  return (
+                    <BlogCard
+                      key={related.slug}
+                      article={related}
+                      metaText={metaParts.join(' · ')}
+                    />
+                  );
+                })}
+              </div>
+            </section>
+          </GlassCard>
+        </MotionReveal>
+      )}
 
       <MotionReveal>
         <NewsletterCard />
