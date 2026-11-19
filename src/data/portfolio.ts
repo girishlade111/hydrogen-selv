@@ -328,8 +328,9 @@ export const PROJECTS: ProjectItem[] = [
     category: 'Documents · PDF Toolkit',
     url: 'https://pdf.ladestack.in/',
     repositoryUrl: 'https://github.com/girishlade111/LS-PDF',
-    coverImage: SITE_ASSETS.pdfEditorial,
-    coverAlt: 'Layered archival charcoal and ivory sheets representing LS PDF document toolkit',
+    coverImage: SITE_ASSETS.lsPdf,
+    coverAlt:
+      'Dark frosted glass interface cards for Merge, Split, Compress, Convert, and OCR operations in LS PDF',
     status: 'live',
     role: 'Product creator and maintainer',
     overview:
@@ -373,8 +374,9 @@ export const PROJECTS: ProjectItem[] = [
     category: 'Documentation · Markdown Publishing',
     url: 'https://md2pdf.ladestack.in/',
     repositoryUrl: 'https://github.com/girishlade111/ReadmePDF',
-    coverImage: SITE_ASSETS.blogLight,
-    coverAlt: 'Warm illuminated glass facade representing MD2PDF editorial publishing',
+    coverImage: SITE_ASSETS.md2Pdf,
+    coverAlt:
+      'Dark mode split-screen editor showing Markdown source code on left and typeset PDF document page on right',
     status: 'live',
     role: 'Creator and product owner under LadeStack',
     overview:
@@ -416,8 +418,9 @@ export const PROJECTS: ProjectItem[] = [
       'Compare standard and regional Indian land-area units through a region-aware conversion interface.',
     category: 'Engineering & Measurement · Unit Converter',
     url: 'https://land.ladestack.in/',
-    coverImage: SITE_ASSETS.systemsGrid,
-    coverAlt: 'Precision matte black measurement instruments representing Bharat Land Converter',
+    coverImage: SITE_ASSETS.bharatLand,
+    coverAlt:
+      'Precision dark technical dashboard with cadastral land vectors and Indian unit conversion telemetry',
     status: 'live',
     role: 'Product creator',
     overview:
@@ -451,8 +454,9 @@ export const PROJECTS: ProjectItem[] = [
     category: 'Career Productivity · Resume Builder',
     url: 'https://resume.ladestack.in/',
     repositoryUrl: 'https://github.com/girishlade111/swift-resume-builder',
-    coverImage: SITE_ASSETS.pdfEditorial,
-    coverAlt: 'Clean layered paper geometry representing Swift Resume document builder',
+    coverImage: SITE_ASSETS.swiftResume,
+    coverAlt:
+      'Modern dark resume builder UI with modular section inputs and live dark-charcoal resume layout preview',
     status: 'live',
     role: 'Product creator',
     overview:
