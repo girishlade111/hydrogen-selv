@@ -1,0 +1,11 @@
+# Robots.txt for Girish Lade Portfolio (LadeStack)
+# Domain: https://ladestack.in
+
+User-agent: *
+Allow: /
+
+# Search engine sitemap location
+Sitemap: https://ladestack.in/sitemap.xml
+
+# Canonical Host
+Host: https://ladestack.in
