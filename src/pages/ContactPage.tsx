@@ -6,6 +6,7 @@ import { GlassCardHero } from '../components/GlassCard';
 import { MotionReveal } from '../components/MotionReveal';
 import { NewsletterCard } from '../components/NewsletterCard';
 import { PageShell } from '../components/PageShell';
+import { SeoHead } from '../components/SeoHead';
 import { SiteFooter } from '../components/SiteFooter';
 import { PROFILE } from '../data/portfolio';
 
