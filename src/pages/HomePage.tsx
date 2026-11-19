@@ -9,6 +9,7 @@ import { MotionReveal } from '../components/MotionReveal';
 import { NewsletterCard } from '../components/NewsletterCard';
 import { PageShell } from '../components/PageShell';
 import { PhilosophyCard } from '../components/PhilosophyCard';
+import { SeoHead } from '../components/SeoHead';
 import { SiteFooter } from '../components/SiteFooter';
 import { BLOG_POSTS, CAPABILITIES, PROFILE, PROJECTS, SITE_ASSETS } from '../data/portfolio';
 import { MOTION_TOKENS, staggerContainerVariants, staggerItemVariants } from '../motion/variants';
@@ -22,6 +23,33 @@ const PREVIEW_PROJECTS = [
 export function HomePage() {
   return (
     <PageShell>
+      <SeoHead
+        title="Girish Lade — UI/UX Designer, Full-Stack Developer & LadeStack Founder"
+        description="Explore the portfolio of Girish Balaso Lade, a UI/UX designer and full-stack developer in Pune, India creating developer tools, web apps, and LadeStack products."
+        canonicalPath="/"
+        keywords="Girish Lade, Girish Balaso Lade, UI/UX Designer, Full-Stack Developer, LadeStack, Pune, React, TypeScript, Developer Tools"
+        ogType="website"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          '@id': 'https://ladestack.in/#girishlade',
+          name: 'Girish Balaso Lade',
+          alternateName: ['Girish Lade', 'LadeStack Founder'],
+          url: 'https://ladestack.in/',
+          jobTitle: 'UI/UX Designer & Full-Stack Developer',
+          worksFor: {
+            '@type': 'Organization',
+            name: 'LadeStack',
+            url: 'https://ladestack.in/',
+          },
+          sameAs: [
+            'https://github.com/girishlade111',
+            'https://www.linkedin.com/in/girish-lade/',
+            'https://www.instagram.com/girish_lade_/',
+            'https://codepen.io/Girish-Lade-the-looper',
+          ],
+        }}
+      />
       {/* 1. Identity / Hero Card */}
       <MotionReveal>
         <GlassCardHero className="p-6 sm:p-7">
