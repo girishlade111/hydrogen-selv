@@ -17,10 +17,10 @@ export function AboutPage() {
         <GlassCardHero className="overflow-hidden">
           <div className="relative aspect-[4/3] w-full overflow-hidden">
             <img
-              src={SITE_ASSETS.brandArt}
-              alt="Minimalist obsidian and frosted glass composition representing Girish Lade's product engineering practice"
+              src={SITE_ASSETS.profilePicture}
+              alt="Girish Balaso Lade - Developer & Product Designer"
               referrerPolicy="no-referrer"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover object-[center_20%]"
             />
             <div
               aria-hidden="true"

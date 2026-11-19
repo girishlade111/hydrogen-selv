@@ -32,24 +32,17 @@ export function HomePage() {
           </div>
 
           <div className="mt-5 flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:gap-6">
-            {/* Personal brand abstract artwork — avoids fabricated portrait */}
-            <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-[22px] border border-white/[0.12] bg-zinc-900 shadow-lg sm:h-32 sm:w-32">
+            {/* Girish Lade Official Profile Picture */}
+            <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-[22px] border border-white/[0.14] bg-zinc-900 shadow-2xl sm:h-32 sm:w-32">
               <img
-                src={SITE_ASSETS.brandArt}
-                alt="Minimalist obsidian and smoked glass geometric sculpture representing Girish Lade's studio"
-                referrerPolicy="no-referrer"
-                className="h-full w-full object-cover"
+                src={SITE_ASSETS.profilePicture}
+                alt="Girish Balaso Lade - Developer & Product Designer"
+                className="h-full w-full object-cover object-[center_15%]"
               />
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/15"
+                className="pointer-events-none absolute inset-0 rounded-[22px] ring-1 ring-inset ring-white/10"
               />
-              <span
-                aria-hidden="true"
-                className="absolute bottom-2.5 left-3 font-mono text-[11px] font-medium tracking-[0.14em] text-zinc-200/90"
-              >
-                GL
-              </span>
             </div>
 
             <div className="text-center sm:text-left">

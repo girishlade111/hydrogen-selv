@@ -490,8 +490,9 @@ export const PROJECTS: ProjectItem[] = [
     category: 'Image Utilities · Web Performance',
     url: 'https://img.ladestack.in/',
     repositoryUrl: 'https://github.com/girishlade111/Image-Compressor',
-    coverImage: SITE_ASSETS.ideStudio,
-    coverAlt: 'Dark tactile studio optics representing LS Image Compressor',
+    coverImage: SITE_ASSETS.imageCompressor,
+    coverAlt:
+      'Dark UI showing before-and-after image compression comparison, file size reduction stats, and format tags',
     status: 'live',
     role: 'Product creator and repository maintainer',
     overview:
@@ -523,8 +524,9 @@ export const PROJECTS: ProjectItem[] = [
     category: 'Games · Interactive Frontend',
     url: 'https://games-ladestack.vercel.app/',
     repositoryUrl: 'https://github.com/girishlade111/games-ladestack',
-    coverImage: SITE_ASSETS.systemsGrid,
-    coverAlt: 'Precision mechanical dark surface representing GameHub interactive collection',
+    coverImage: SITE_ASSETS.gamehub,
+    coverAlt:
+      'Premium dark web arcade portal featuring modern puzzle and retro games with frosted cards and leaderboard',
     status: 'live',
     role: 'Project builder and developer',
     overview:
@@ -559,36 +561,40 @@ export const PROJECTS: ProjectItem[] = [
     slug: 'ladestack-drive',
     title: 'LadeStack Drive',
     shortDescription:
-      'File-management project. Exact production functionality requires verification.',
-    category: 'File Management · Storage Experiment',
+      'A sleek browser-based music tool, cloud audio player, and personal audio workspace.',
+    category: 'Audio & Music · Cloud Drive',
     url: 'https://drive.ladestack.in/',
-    coverImage: SITE_ASSETS.brandArt,
-    coverAlt: 'Minimal dark glass blocks representing LadeStack Drive file-management experiment',
-    status: 'experimental',
-    statusNote: 'Experimental / Verification Pending',
-    role: 'Project creator',
+    coverImage: SITE_ASSETS.ladestackDrive,
+    coverAlt:
+      'Ultra-sleek dark audio workspace with waveform visualizer and studio player controls representing LadeStack Drive',
+    status: 'live',
+    role: 'Project creator and developer',
     overview:
-      "LadeStack Drive is a file-management project associated with Girish Lade's storage and file-workflow experimentation. Because the exact current production implementation has not been independently verified from live domain inspection, it is listed here transparently as experimental / verification pending.",
+      'LadeStack Drive is a personal cloud audio player and music workspace built for listening, organizing, and streaming audio files directly in the browser with high-fidelity waveform visualization and studio-grade controls.',
     useCases: [
       {
-        title: 'Exploring Organized File Interfaces',
+        title: 'Stream and Play Personal Audio Files',
         description:
-          'Investigates clean folder navigation and approachable browser-based file-management layouts.',
+          'Stream your curated music library and audio tracks smoothly within the browser with rich lossless audio playback.',
       },
       {
-        title: 'Evaluating Storage and Access Patterns',
+        title: 'Waveform Visualization and Audio Controls',
         description:
-          'Serves as an ongoing study in separating UI prototypes from verified, production-hardened cloud storage.',
+          'Inspect track dynamics with a real-time waveform visualizer, responsive scrubber, and studio sound controls.',
       },
       {
-        title: 'Transparent Project Status Reporting',
+        title: 'Organize Playlists and Audio Tracks',
         description:
-          'Maintained separately from verified live utilities until deployment behavior and storage boundaries are audited.',
+          'Manage audio tracks, track queues, and collections in a clean, dark-themed cloud drive interface.',
       },
     ],
-    technologies: ['Web File Workflows', 'Storage Architecture Exploration'],
-    disclaimer:
-      'Experimental / Verification Pending. No claims of live cloud sync, encryption, sharing, or persistent storage are made until verified.',
+    technologies: [
+      'Web Audio API',
+      'React',
+      'Audio Worklets',
+      'Waveform Visualizer',
+      'Tailwind CSS',
+    ],
   },
 ];
 
