@@ -14,6 +14,30 @@ import { staggerContainerVariants, staggerItemVariants } from '../motion/variant
 export function ProjectsPage() {
   return (
     <PageShell>
+      <SeoHead
+        title="Projects by Girish Lade — Browser IDEs, PDF Tools & Web Apps"
+        description="Full catalog of projects built by Girish Lade: LadeStack ecosystem, GB Coder online IDE, LS PDF toolkit, MD2PDF, Bharat Land Converter, and developer tools."
+        canonicalPath="/projects"
+        keywords="Girish Lade Projects, GB Coder, LS PDF, Bharat Land Converter, MD2PDF, Swift Resume, LadeStack, Developer Tools"
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Projects', item: '/projects' },
+        ]}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: 'Projects by Girish Lade',
+          description: 'Selected LadeStack products, developer utilities, and web experiments.',
+          url: 'https://ladestack.in/projects',
+          hasPart: PROJECTS.map((p) => ({
+            '@type': 'SoftwareApplication',
+            name: p.title,
+            description: p.shortDescription,
+            url: p.url,
+            applicationCategory: p.category,
+          })),
+        }}
+      />
       {/* Top Title Card matching Projects reference */}
       <MotionReveal>
         <GlassCardHero className="flex min-h-[196px] flex-col justify-between p-6 sm:p-7">
