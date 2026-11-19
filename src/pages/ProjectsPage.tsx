@@ -6,6 +6,7 @@ import { MotionReveal } from '../components/MotionReveal';
 import { NewsletterCard } from '../components/NewsletterCard';
 import { PageShell } from '../components/PageShell';
 import { ProjectCard } from '../components/ProjectCard';
+import { SeoHead } from '../components/SeoHead';
 import { SiteFooter } from '../components/SiteFooter';
 import { PROJECTS } from '../data/portfolio';
 import { staggerContainerVariants, staggerItemVariants } from '../motion/variants';
