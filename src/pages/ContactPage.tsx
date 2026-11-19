@@ -13,6 +13,29 @@ import { PROFILE } from '../data/portfolio';
 export function ContactPage() {
   return (
     <PageShell>
+      <SeoHead
+        title="Contact Girish Lade — Developer & LadeStack Founder"
+        description="Get in touch with Girish Balaso Lade for web development projects, UI/UX interaction design consulting, developer tools, and engineering collaborations."
+        canonicalPath="/contact"
+        keywords="Contact Girish Lade, Hire Frontend Developer Pune, Hire UI UX Designer India, LadeStack Contact"
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Contact', item: '/contact' },
+        ]}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'ContactPage',
+          name: 'Contact Girish Lade',
+          description: 'Get in touch with Girish Balaso Lade for collaborations and inquiries.',
+          url: 'https://ladestack.in/contact',
+          mainEntity: {
+            '@type': 'Person',
+            name: 'Girish Balaso Lade',
+            email: 'admin@ladestack.in',
+            url: 'https://ladestack.in/',
+          },
+        }}
+      />
       {/* 1. Large Title Card matching Contact screenshot */}
       <MotionReveal>
         <GlassCardHero className="flex min-h-[196px] flex-col justify-between p-6 sm:p-7">
