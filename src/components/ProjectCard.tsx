@@ -20,7 +20,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <Link
         to={`/projects/${project.slug}`}
         aria-label={`View ${project.title} project details`}
-        className="relative block aspect-[4/3] w-full overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#fdfbd4]"
+        className="relative block aspect-[4/3] w-full overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white"
       >
         <motion.img
           src={project.coverImage}

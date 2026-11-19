@@ -14,7 +14,7 @@ export function SiteFooter() {
         <div className="flex items-center gap-4">
           <Link
             to="/projects"
-            className="transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fdfbd4]"
+            className="transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             Projects
           </Link>
@@ -22,7 +22,7 @@ export function SiteFooter() {
             href={PROFILE.brandUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-zinc-200 transition-colors hover:text-[#fdfbd4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fdfbd4]"
+            className="font-medium text-zinc-200 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             {PROFILE.brandName}
           </a>

@@ -38,7 +38,7 @@ export function FloatingNavigation() {
                 aria-label={label}
                 aria-current={isActive ? 'page' : undefined}
                 title={label}
-                className={`group relative flex h-10 w-10 items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fdfbd4] ${
+                className={`group relative flex h-10 w-10 items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${
                   isActive ? 'text-white' : 'text-zinc-400 hover:text-white'
                 }`}
               >

@@ -50,7 +50,7 @@ export function ContactPage() {
               Reach out at{' '}
               <a
                 href={`mailto:${PROFILE.email}`}
-                className="font-mono text-[13px] text-zinc-200 underline decoration-white/25 underline-offset-4 hover:text-[#fdfbd4]"
+                className="font-mono text-[13px] text-zinc-200 underline decoration-white/25 underline-offset-4 hover:text-white"
               >
                 {PROFILE.email}
               </a>{' '}

@@ -177,11 +177,11 @@ export function BlogDetailPage() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.96 }}
                 transition={MOTION_TOKENS.springTactile}
-                className="inline-flex h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-xl border border-white/[0.12] bg-black/45 px-3.5 text-[13px] font-medium text-white/95 backdrop-blur-md transition-colors hover:border-white/[0.22] hover:bg-black/65 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fdfbd4]"
+                className="inline-flex h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-xl border border-white/[0.12] bg-black/45 px-3.5 text-[13px] font-medium text-white/95 backdrop-blur-md transition-colors hover:border-white/[0.22] hover:bg-black/65 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 {toastState === 'copied' ? (
                   <>
-                    <Check className="h-3.5 w-3.5 text-[#fdfbd4]" aria-hidden="true" />
+                    <Check className="h-3.5 w-3.5 text-white" aria-hidden="true" />
                     <span>Copied</span>
                   </>
                 ) : (
@@ -311,7 +311,7 @@ export function BlogDetailPage() {
               >
                 {toastState === 'copied' ? (
                   <>
-                    <Check className="h-4 w-4 shrink-0 text-[#fdfbd4]" aria-hidden="true" />
+                    <Check className="h-4 w-4 shrink-0 text-white" aria-hidden="true" />
                     <span>Link copied to clipboard</span>
                   </>
                 ) : (

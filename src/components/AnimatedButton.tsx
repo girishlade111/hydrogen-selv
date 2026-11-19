@@ -18,7 +18,7 @@ interface AnimatedButtonProps {
 
 const STYLES: Record<'primary' | 'dark' | 'ghost', string> = {
   primary:
-    'bg-[#fdfbd4] text-[#09090b] font-semibold hover:bg-[#fffef0] shadow-[0_6px_20px_-6px_rgba(253,251,212,0.35)]',
+    'bg-white text-[#09090b] font-semibold hover:bg-zinc-200 shadow-[0_6px_20px_-6px_rgba(255,255,255,0.35)]',
   dark:
     'bg-white/[0.06] text-white/95 font-medium border border-white/[0.1] hover:bg-white/[0.11] hover:border-white/[0.18]',
   ghost:
@@ -37,7 +37,7 @@ export function AnimatedButton({
   className = '',
   ariaLabel,
 }: AnimatedButtonProps) {
-  const baseClass = `inline-flex items-center justify-center gap-2 whitespace-nowrap shrink-0 rounded-xl px-5 py-2.5 text-[14px] leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fdfbd4] focus-visible:ring-offset-2 focus-visible:ring-offset-[#09090b] disabled:opacity-50 disabled:pointer-events-none ${STYLES[variant]} ${fullWidth ? 'w-full' : ''} ${className}`;
+  const baseClass = `inline-flex items-center justify-center gap-2 whitespace-nowrap shrink-0 rounded-xl px-5 py-2.5 text-[14px] leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#09090b] disabled:opacity-50 disabled:pointer-events-none ${STYLES[variant]} ${fullWidth ? 'w-full' : ''} ${className}`;
 
   if (to) {
     return (

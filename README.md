@@ -117,7 +117,7 @@ Defined in `PROJECTS` inside `src/data/portfolio.ts`:
 - **Typography**: `Plus Jakarta Sans` (UI & editorial body) and `JetBrains Mono` (code/monogram/topic metadata), loaded via Google Fonts in `index.html` and mapped in `@theme`.
 - **Palette Tokens**:
   - Background / Ink Dark: `#09090b`
-  - Accent Cream: `#fdfbd4` (hover `#fffef0`, rgb: `253, 251, 212`)
+  - Accent White: `#ffffff` (hover `#e4e4e7`, rgb: `255, 255, 255`)
   - Glass Surface: `rgba(14, 14, 16, 0.72)` / Dense: `rgba(11, 11, 13, 0.84)`
   - Hairline Borders: `rgba(255, 255, 255, 0.085)` (hover `rgba(255, 255, 255, 0.16)`)
 - **Layout Geometry**: Single-column container (`max-w-[540px]`), large rounded cards (`28px` / `32px`), subtle dark custom scrollbars, and unboxed `·`-separated metadata lines.
