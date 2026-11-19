@@ -2,11 +2,17 @@ import { AnimatedButton } from '../components/AnimatedButton';
 import { BackButton } from '../components/BackButton';
 import { GlassCardHero } from '../components/GlassCard';
 import { PageShell } from '../components/PageShell';
+import { SeoHead } from '../components/SeoHead';
 import { SiteFooter } from '../components/SiteFooter';
 
 export function NotFoundPage() {
   return (
     <PageShell>
+      <SeoHead
+        title="Page Not Found — Girish Lade"
+        description="The page you requested does not exist in this portfolio."
+        noindex
+      />
       <GlassCardHero className="flex min-h-[260px] flex-col justify-between p-7">
         <div>
           <BackButton to="/" label="Back to home" />
