@@ -7,6 +7,7 @@ import { MotionReveal } from '../components/MotionReveal';
 import { NewsletterCard } from '../components/NewsletterCard';
 import { PageShell } from '../components/PageShell';
 import { ProjectDetailSection } from '../components/ProjectDetailSection';
+import { SeoHead } from '../components/SeoHead';
 import { SiteFooter } from '../components/SiteFooter';
 import { getProjectBySlug } from '../utils/portfolioHelpers';
 import { useParams } from 'react-router-dom';
@@ -18,6 +19,11 @@ export function ProjectDetailPage() {
   if (!project) {
     return (
       <PageShell>
+        <SeoHead
+          title="Project Not Found — Girish Lade"
+          description="The requested project could not be located in the portfolio catalog."
+          noindex
+        />
         <GlassCardHero className="p-7 text-center">
           <h1 className="text-[24px] font-semibold text-white">Project not found</h1>
           <p className="mt-2 text-[14px] text-zinc-400">
