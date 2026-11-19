@@ -13,36 +13,11 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 
-import { getBlogPostBySlug, getProjectBySlug } from './utils/portfolioHelpers';
 
 function RouteSync() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
-
-    if (pathname === '/') {
-      document.title = 'Girish Lade — UI/UX Designer, Full-Stack Developer & LadeStack Founder';
-    } else if (pathname === '/projects') {
-      document.title = 'Projects by Girish Lade — Browser IDEs, PDF Tools & Web Apps';
-    } else if (pathname.startsWith('/projects/')) {
-      const slug = pathname.replace('/projects/', '');
-      const project = getProjectBySlug(slug);
-      document.title = project
-        ? `${project.title} — Girish Lade`
-        : 'Project Not Found — Girish Lade';
-    } else if (pathname === '/blog') {
-      document.title = 'Notes & Writing — Girish Lade';
-    } else if (pathname.startsWith('/blog/')) {
-      const slug = pathname.replace('/blog/', '');
-      const post = getBlogPostBySlug(slug);
-      document.title = post ? `${post.title} — Girish Lade` : 'Note Not Found — Girish Lade';
-    } else if (pathname === '/about') {
-      document.title = 'About Girish Lade — Engineer, Product Designer & Developer';
-    } else if (pathname === '/contact') {
-      document.title = 'Contact Girish Lade — Developer & LadeStack Founder';
-    } else {
-      document.title = 'Page Not Found — Girish Lade';
-    }
   }, [pathname]);
   return null;
 }
