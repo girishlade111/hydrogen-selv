@@ -42,6 +42,7 @@ export interface AccordionEntry {
   title: string;
   subtitle?: string;
   description: string;
+  iconName?: string;
   badgeColor?: string;
   badgeLabel?: string;
 }
@@ -183,8 +184,7 @@ export const JOURNEY_PRACTICE: AccordionEntry[] = [
     id: 'mechanical-engineering',
     title: 'Mechanical Engineering Foundation',
     subtitle: 'Systems thinking & practical trade-offs',
-    badgeLabel: 'ME',
-    badgeColor: '#B45309',
+    iconName: 'mechanical',
     description:
       'Formal education and study in Mechanical Engineering shaped a systems-oriented approach to constraints, trade-offs, practical problem solving, and iteration.',
   },
@@ -192,8 +192,7 @@ export const JOURNEY_PRACTICE: AccordionEntry[] = [
     id: 'ui-ux-design',
     title: 'UI/UX & Product Design',
     subtitle: 'Clarity, typography & accessibility',
-    badgeLabel: 'UI',
-    badgeColor: '#1D4ED8',
+    iconName: 'design',
     description:
       'Focus on responsive interfaces, information architecture, typography, interaction design, accessibility, and clear workflows.',
   },
@@ -201,8 +200,7 @@ export const JOURNEY_PRACTICE: AccordionEntry[] = [
     id: 'fullstack-dev',
     title: 'Full-Stack Development',
     subtitle: 'React, TypeScript, Node.js & APIs',
-    badgeLabel: 'FS',
-    badgeColor: '#0F766E',
+    iconName: 'fullstack',
     description:
       'Work spans React, TypeScript, Node.js-oriented application development, frontend architecture, APIs, browser storage, authentication patterns, databases, and deployment workflows.',
   },
@@ -210,8 +208,7 @@ export const JOURNEY_PRACTICE: AccordionEntry[] = [
     id: 'browser-first',
     title: 'Browser-First Tools',
     subtitle: 'Local execution & portable outputs',
-    badgeLabel: 'BF',
-    badgeColor: '#4338CA',
+    iconName: 'browser',
     description:
       'Interest in Monaco Editor, WebContainers, IndexedDB, Web Workers, Canvas, local processing, portable outputs, and browser-native software.',
   },
@@ -219,8 +216,7 @@ export const JOURNEY_PRACTICE: AccordionEntry[] = [
     id: 'ai-engineering',
     title: 'AI-Assisted Engineering',
     subtitle: 'BYOK workflows & coding agents',
-    badgeLabel: 'AI',
-    badgeColor: '#6D28D9',
+    iconName: 'ai',
     description:
       'Exploration of coding agents, model APIs, BYOK architectures, multi-provider systems, review workflows, and responsible AI-assisted development.',
   },
@@ -228,8 +224,7 @@ export const JOURNEY_PRACTICE: AccordionEntry[] = [
     id: 'ladestack',
     title: 'LadeStack',
     subtitle: 'Independent product ecosystem',
-    badgeLabel: 'LS',
-    badgeColor: '#A16207',
+    iconName: 'ladestack',
     description:
       'Independent product ecosystem focused on useful developer and productivity tools built with clean interfaces and minimal setup friction.',
   },
