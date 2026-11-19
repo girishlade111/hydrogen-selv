@@ -72,7 +72,7 @@ export function ContactForm() {
             autoComplete="name"
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errors.name ? 'contact-name-error' : undefined}
-            className="w-full rounded-xl border border-white/[0.09] bg-[#08080a]/90 px-4 py-3 text-[14px] text-white placeholder:text-zinc-500 focus:border-white/[0.25] focus:outline-none focus:ring-2 focus:ring-[#f7cb15]/40"
+            className="w-full rounded-xl border border-white/[0.09] bg-[#08080a]/90 px-4 py-3 text-[14px] text-white placeholder:text-zinc-500 focus:border-white/[0.25] focus:outline-none focus:ring-2 focus:ring-[#fdfbd4]/40"
           />
           {errors.name && (
             <p id="contact-name-error" className="mt-1.5 flex items-center gap-1.5 text-[12px] text-amber-300">
@@ -103,7 +103,7 @@ export function ContactForm() {
             autoComplete="email"
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? 'contact-email-error' : undefined}
-            className="w-full rounded-xl border border-white/[0.09] bg-[#08080a]/90 px-4 py-3 text-[14px] text-white placeholder:text-zinc-500 focus:border-white/[0.25] focus:outline-none focus:ring-2 focus:ring-[#f7cb15]/40"
+            className="w-full rounded-xl border border-white/[0.09] bg-[#08080a]/90 px-4 py-3 text-[14px] text-white placeholder:text-zinc-500 focus:border-white/[0.25] focus:outline-none focus:ring-2 focus:ring-[#fdfbd4]/40"
           />
           {errors.email && (
             <p id="contact-email-error" className="mt-1.5 flex items-center gap-1.5 text-[12px] text-amber-300">
@@ -133,7 +133,7 @@ export function ContactForm() {
             placeholder="Share context about your project, product idea, or question..."
             aria-invalid={Boolean(errors.message)}
             aria-describedby={errors.message ? 'contact-message-error' : undefined}
-            className="w-full resize-y rounded-xl border border-white/[0.09] bg-[#08080a]/90 px-4 py-3 text-[14px] leading-relaxed text-white placeholder:text-zinc-500 focus:border-white/[0.25] focus:outline-none focus:ring-2 focus:ring-[#f7cb15]/40"
+            className="w-full resize-y rounded-xl border border-white/[0.09] bg-[#08080a]/90 px-4 py-3 text-[14px] leading-relaxed text-white placeholder:text-zinc-500 focus:border-white/[0.25] focus:outline-none focus:ring-2 focus:ring-[#fdfbd4]/40"
           />
           {errors.message && (
             <p id="contact-message-error" className="mt-1.5 flex items-center gap-1.5 text-[12px] text-amber-300">
@@ -149,7 +149,7 @@ export function ContactForm() {
           whileHover={{ scale: 1.012 }}
           whileTap={{ scale: 0.985 }}
           transition={MOTION_TOKENS.springTactile}
-          className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#f7cb15] px-5 py-3.5 text-[14px] font-semibold text-[#09090b] shadow-[0_6px_22px_-6px_rgba(247,203,21,0.45)] transition-colors hover:bg-[#ffd93b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:opacity-60"
+          className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#fdfbd4] px-5 py-3.5 text-[14px] font-semibold text-[#09090b] shadow-[0_6px_22px_-6px_rgba(253,251,212,0.35)] transition-colors hover:bg-[#fffef0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:opacity-60"
         >
           {status === 'preparing' ? (
             <>
@@ -180,7 +180,7 @@ export function ContactForm() {
               <div className="mt-3 flex flex-wrap items-center gap-2.5">
                 <a
                   href={mailtoLink}
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#f7cb15] px-3.5 py-2 text-[12.5px] font-semibold text-[#09090b] transition-colors hover:bg-[#ffd93b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#fdfbd4] px-3.5 py-2 text-[12.5px] font-semibold text-[#09090b] transition-colors hover:bg-[#fffef0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
                   <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                   Open Email App
@@ -188,11 +188,11 @@ export function ContactForm() {
                 <button
                   type="button"
                   onClick={handleCopyDetails}
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-white/[0.12] bg-white/[0.06] px-3.5 py-2 text-[12.5px] font-medium text-white transition-colors hover:bg-white/[0.12] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f7cb15]"
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-white/[0.12] bg-white/[0.06] px-3.5 py-2 text-[12.5px] font-medium text-white transition-colors hover:bg-white/[0.12] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fdfbd4]"
                 >
                   {status === 'copied' ? (
                     <>
-                      <Check className="h-3.5 w-3.5 text-[#f7cb15]" aria-hidden="true" />
+                      <Check className="h-3.5 w-3.5 text-[#fdfbd4]" aria-hidden="true" />
                       Copied
                     </>
                   ) : (

@@ -110,7 +110,7 @@ export function HomePage() {
           <Link
             to="/projects"
             aria-label="Browse selected projects"
-            className="group relative mx-auto mt-5 flex h-52 max-w-[380px] items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f7cb15] sm:h-56"
+            className="group relative mx-auto mt-5 flex h-52 max-w-[380px] items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fdfbd4] sm:h-56"
           >
             {/* Left fanned card */}
             <motion.div
@@ -254,7 +254,7 @@ export function HomePage() {
               <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.12] bg-zinc-800 font-mono text-[10px] font-semibold text-zinc-300">
                 TS
               </span>
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.12] bg-zinc-900 font-mono text-[10px] font-semibold text-[#f7cb15]">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.12] bg-zinc-900 font-mono text-[10px] font-semibold text-[#fdfbd4]">
                 UI
               </span>
             </div>

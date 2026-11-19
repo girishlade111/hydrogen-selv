@@ -57,14 +57,14 @@ export function Accordion({ items, variant = 'pill', defaultOpenId = null }: Acc
                 type="button"
                 onClick={() => toggle(item.id)}
                 aria-expanded={isOpen}
-                className="group flex w-full items-center justify-between gap-3.5 rounded-2xl py-3 px-2 -mx-2 text-left transition-colors hover:bg-white/[0.035] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f7cb15]"
+                className="group flex w-full items-center justify-between gap-3.5 rounded-2xl py-3 px-2 -mx-2 text-left transition-colors hover:bg-white/[0.035] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fdfbd4]"
               >
                 <div className="flex min-w-0 items-center gap-3.5">
                   <span
                     aria-hidden="true"
                     className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition-all duration-200 ${
                       isOpen
-                        ? 'border-[#f7cb15]/35 bg-[#f7cb15]/10 text-[#f7cb15] shadow-[0_0_12px_rgba(247,203,21,0.12)]'
+                        ? 'border-[#fdfbd4]/35 bg-[#fdfbd4]/10 text-[#fdfbd4] shadow-[0_0_12px_rgba(253,251,212,0.15)]'
                         : 'border-white/[0.08] bg-[#141418]/90 text-zinc-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] group-hover:border-white/[0.16] group-hover:text-white'
                     }`}
                   >
@@ -84,7 +84,7 @@ export function Accordion({ items, variant = 'pill', defaultOpenId = null }: Acc
                   animate={{ rotate: isOpen ? 180 : 0 }}
                   transition={MOTION_TOKENS.springTactile}
                   className={`shrink-0 transition-colors ${
-                    isOpen ? 'text-[#f7cb15]' : 'text-zinc-400 group-hover:text-zinc-200'
+                    isOpen ? 'text-[#fdfbd4]' : 'text-zinc-400 group-hover:text-zinc-200'
                   }`}
                 >
                   <ChevronDown className="h-4 w-4" />
@@ -127,7 +127,7 @@ export function Accordion({ items, variant = 'pill', defaultOpenId = null }: Acc
               type="button"
               onClick={() => toggle(item.id)}
               aria-expanded={isOpen}
-              className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#f7cb15]"
+              className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#fdfbd4]"
             >
               <span className="text-[15px] font-medium text-white">{item.title}</span>
               <motion.span

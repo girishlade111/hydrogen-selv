@@ -35,7 +35,7 @@ export function ContactFaqCard() {
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.985 }}
                   transition={MOTION_TOKENS.springTactile}
-                  className="inline-flex max-w-[85%] items-center gap-2 rounded-2xl rounded-br-sm bg-white px-4 py-3 text-left text-[13.5px] font-medium leading-snug text-[#09090b] shadow-sm transition-colors hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f7cb15]"
+                  className="inline-flex max-w-[85%] items-center gap-2 rounded-2xl rounded-br-sm bg-white px-4 py-3 text-left text-[13.5px] font-medium leading-snug text-[#09090b] shadow-sm transition-colors hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fdfbd4]"
                 >
                   <span>{item.question}</span>
                   <motion.span

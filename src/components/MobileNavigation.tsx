@@ -22,7 +22,7 @@ export function MobileNavigation() {
               to={path}
               aria-label={label}
               aria-current={isActive ? 'page' : undefined}
-              className={`relative flex h-11 min-w-[48px] flex-1 items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f7cb15] ${
+              className={`relative flex h-11 min-w-[48px] flex-1 items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fdfbd4] ${
                 isActive ? 'text-white' : 'text-zinc-400 hover:text-white'
               }`}
             >

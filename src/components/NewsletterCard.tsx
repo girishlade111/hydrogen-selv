@@ -45,7 +45,7 @@ export function NewsletterCard() {
         <label htmlFor="newsletter-email" className="sr-only">
           Email address for updates
         </label>
-        <div className="flex items-center gap-2 rounded-2xl border border-white/[0.08] bg-[#08080a]/90 p-1.5 pl-4 focus-within:border-white/[0.22] focus-within:ring-2 focus-within:ring-[#f7cb15]/40">
+        <div className="flex items-center gap-2 rounded-2xl border border-white/[0.08] bg-[#08080a]/90 p-1.5 pl-4 focus-within:border-white/[0.22] focus-within:ring-2 focus-within:ring-[#fdfbd4]/40">
           <input
             id="newsletter-email"
             type="email"
@@ -63,7 +63,7 @@ export function NewsletterCard() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
             transition={MOTION_TOKENS.springTactile}
-            className="shrink-0 whitespace-nowrap rounded-xl bg-[#f7cb15] px-4 py-2.5 text-[13px] font-semibold text-[#09090b] transition-colors hover:bg-[#ffd93b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="shrink-0 whitespace-nowrap rounded-xl bg-[#fdfbd4] px-4 py-2.5 text-[13px] font-semibold text-[#09090b] transition-colors hover:bg-[#fffef0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             Notify Me
           </motion.button>
@@ -92,7 +92,7 @@ export function NewsletterCard() {
               className="mt-3 rounded-xl border border-white/[0.08] bg-white/[0.04] p-3 text-[12.5px] leading-relaxed text-zinc-300"
             >
               <div className="flex items-start gap-2">
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#f7cb15]" aria-hidden="true" />
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#fdfbd4]" aria-hidden="true" />
                 <div>
                   <p className="font-medium text-white">
                     No automated mailing list is connected yet.
@@ -103,7 +103,7 @@ export function NewsletterCard() {
                   </p>
                   <a
                     href={buildNewsletterMailtoHref(submittedEmail)}
-                    className="mt-2 inline-flex items-center gap-1.5 font-medium text-[#f7cb15] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f7cb15]"
+                    className="mt-2 inline-flex items-center gap-1.5 font-medium text-[#fdfbd4] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fdfbd4]"
                   >
                     <Mail className="h-3.5 w-3.5" aria-hidden="true" />
                     Email admin@ladestack.in
