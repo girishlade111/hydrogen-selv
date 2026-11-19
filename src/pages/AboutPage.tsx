@@ -6,12 +6,40 @@ import { MotionReveal } from '../components/MotionReveal';
 import { NewsletterCard } from '../components/NewsletterCard';
 import { PageShell } from '../components/PageShell';
 import { PhilosophyCard } from '../components/PhilosophyCard';
+import { SeoHead } from '../components/SeoHead';
 import { SiteFooter } from '../components/SiteFooter';
 import { JOURNEY_PRACTICE, PROFILE, SITE_ASSETS } from '../data/portfolio';
 
 export function AboutPage() {
   return (
     <PageShell>
+      <SeoHead
+        title="About Girish Lade — Engineer, Product Designer & Developer"
+        description="Learn about Girish Balaso Lade, founder of LadeStack. Mechanical Engineering roots, UI/UX interaction design, and modern full-stack web software in Pune, India."
+        canonicalPath="/about"
+        keywords="About Girish Lade, Girish Balaso Lade, LadeStack Founder, Mechanical Engineer Software Developer, Pune, Web Development"
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'About', item: '/about' },
+        ]}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          name: 'About Girish Lade',
+          description: 'Background, education, design philosophy, and technical practice of Girish Balaso Lade.',
+          url: 'https://ladestack.in/about',
+          mainEntity: {
+            '@type': 'Person',
+            name: 'Girish Balaso Lade',
+            jobTitle: 'UI/UX Designer & Full-Stack Developer',
+            worksFor: {
+              '@type': 'Organization',
+              name: 'LadeStack',
+              url: 'https://ladestack.in/',
+            },
+          },
+        }}
+      />
       {/* 1. Visual Hero Card matching About screenshot */}
       <MotionReveal>
         <GlassCardHero className="overflow-hidden">
