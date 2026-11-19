@@ -118,6 +118,41 @@ export function BlogDetailPage() {
 
   return (
     <PageShell>
+      <SeoHead
+        title={`${article.title} — Girish Lade`}
+        description={article.summary.slice(0, 160)}
+        canonicalPath={`/blog/${article.slug}`}
+        keywords={`${article.tags.join(', ')}, ${article.category}, Girish Lade, LadeStack, Engineering`}
+        ogType="article"
+        ogImage={article.coverImage.startsWith('http') ? article.coverImage : `https://ladestack.in${article.coverImage}`}
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Blog', item: '/blog' },
+          { name: article.title, item: `/blog/${article.slug}` },
+        ]}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: article.title,
+          description: article.summary,
+          keywords: article.tags.join(', '),
+          articleSection: article.category,
+          author: {
+            '@type': 'Person',
+            name: 'Girish Balaso Lade',
+            url: 'https://ladestack.in/',
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'LadeStack',
+            url: 'https://ladestack.in/',
+          },
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `https://ladestack.in/blog/${article.slug}`,
+          },
+        }}
+      />
       {/* 1. Large Visual Hero Card matching Blog Detail screenshot */}
       <MotionReveal>
         <GlassCardHero className="overflow-hidden">
