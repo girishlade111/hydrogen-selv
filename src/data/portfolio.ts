@@ -245,7 +245,8 @@ export const PROJECTS: ProjectItem[] = [
     url: 'https://ladestack.in/',
     repositoryUrl: 'https://github.com/girishlade111',
     coverImage: SITE_ASSETS.brandArt,
-    coverAlt: 'Architectural dark glass composition representing LadeStack product ecosystem',
+    coverAlt:
+      'Architectural dark glass ecosystem showcasing LadeStack web developer utilities, IDE, and document services',
     status: 'live',
     role: 'Founder, product direction, design, development and maintenance',
     overview:
@@ -284,8 +285,9 @@ export const PROJECTS: ProjectItem[] = [
     category: 'Developer Tools · Online IDE',
     url: 'https://code.ladestack.in/',
     repositoryUrl: 'https://github.com/girishlade111/GB-CODER-PUBLIC-ALPHA',
-    coverImage: SITE_ASSETS.ideStudio,
-    coverAlt: 'Minimalist dark desk studio representing GB Coder browser IDE',
+    coverImage: SITE_ASSETS.gbCoder,
+    coverAlt:
+      'Ultra-sleek dark browser IDE workspace with code editor, project tree, terminal, and live preview',
     status: 'live',
     role: 'Founder and product creator',
     overview:
