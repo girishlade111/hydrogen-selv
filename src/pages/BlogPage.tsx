@@ -14,6 +14,35 @@ import { staggerContainerVariants, staggerItemVariants } from '../motion/variant
 export function BlogPage() {
   return (
     <PageShell>
+      <SeoHead
+        title="Notes & Writing — Girish Lade"
+        description="Technical notes and articles by Girish Lade on local-first web architecture, in-browser developer runtimes, documentation systems, and practical UI craft."
+        canonicalPath="/blog"
+        keywords="Girish Lade Blog, Web Development, Local-First, Browser Tools, Software Architecture, UI Engineering"
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Blog', item: '/blog' },
+        ]}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'Blog',
+          name: 'Notes & Writing — Girish Lade',
+          description: 'Technical notes on local-first apps, browser runtimes, documentation, and UI craft.',
+          url: 'https://ladestack.in/blog',
+          author: {
+            '@type': 'Person',
+            name: 'Girish Balaso Lade',
+            url: 'https://ladestack.in/',
+          },
+          blogPost: BLOG_POSTS.map((post) => ({
+            '@type': 'BlogPosting',
+            headline: post.title,
+            description: post.summary,
+            url: `https://ladestack.in/blog/${post.slug}`,
+            keywords: post.tags.join(', '),
+          })),
+        }}
+      />
       {/* Top Title Card matching Blog screenshot */}
       <MotionReveal>
         <GlassCardHero className="flex min-h-[196px] flex-col justify-between p-6 sm:p-7">
