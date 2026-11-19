@@ -42,6 +42,37 @@ export function ProjectDetailPage() {
 
   return (
     <PageShell>
+      <SeoHead
+        title={`${project.title} — Girish Lade`}
+        description={project.overview.slice(0, 160)}
+        canonicalPath={`/projects/${project.slug}`}
+        keywords={`${project.title}, ${project.technologies.join(', ')}, ${project.category}, Girish Lade, LadeStack`}
+        ogType="website"
+        breadcrumbs={[
+          { name: 'Home', item: '/' },
+          { name: 'Projects', item: '/projects' },
+          { name: project.title, item: `/projects/${project.slug}` },
+        ]}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: project.title,
+          description: project.overview,
+          applicationCategory: project.category,
+          operatingSystem: 'Any modern web browser',
+          url: project.url,
+          author: {
+            '@type': 'Person',
+            name: 'Girish Balaso Lade',
+            url: 'https://ladestack.in/',
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'LadeStack',
+            url: 'https://ladestack.in/',
+          },
+        }}
+      />
       {/* 1. Hero Image & Title Card */}
       <MotionReveal>
         <GlassCardHero className="overflow-hidden">
