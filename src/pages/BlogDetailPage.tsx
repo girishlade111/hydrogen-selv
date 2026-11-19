@@ -11,6 +11,7 @@ import { GlassCard, GlassCardHero } from '../components/GlassCard';
 import { MotionReveal } from '../components/MotionReveal';
 import { NewsletterCard } from '../components/NewsletterCard';
 import { PageShell } from '../components/PageShell';
+import { SeoHead } from '../components/SeoHead';
 import { SiteFooter } from '../components/SiteFooter';
 import { BLOG_POSTS } from '../data/portfolio';
 import { MOTION_TOKENS } from '../motion/variants';
@@ -92,6 +93,11 @@ export function BlogDetailPage() {
   if (!article) {
     return (
       <PageShell>
+        <SeoHead
+          title="Note Not Found — Girish Lade"
+          description="The requested technical note could not be found."
+          noindex
+        />
         <GlassCardHero className="p-7 text-center">
           <h1 className="text-[24px] font-semibold text-white">Note not found</h1>
           <p className="mt-2 text-[14px] text-zinc-400">
