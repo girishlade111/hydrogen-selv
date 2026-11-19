@@ -54,11 +54,20 @@ export interface FaqItem {
 
 export const SITE_ASSETS = {
   background: '/src/assets/images/bg_coastal_dusk_1794977312617.jpg',
-  brandArt: '/src/assets/images/brand_monogram_art_1794977313750.jpg',
-  ideStudio: '/src/assets/images/project_ide_studio_1794977313121.jpg',
-  pdfEditorial: '/src/assets/images/project_pdf_editorial_1794977314991.jpg',
-  systemsGrid: '/src/assets/images/project_systems_grid_1794977314324.jpg',
+  brandArt: '/src/assets/images/project_ladestack_ecosystem.jpg',
+  profilePicture: '/src/assets/images/girish_lade_profile.png',
+  gbCoder: '/src/assets/images/project_gb_coder.jpg',
+  lsPdf: '/src/assets/images/project_ls_pdf.jpg',
+  md2Pdf: '/src/assets/images/project_md2pdf.jpg',
+  bharatLand: '/src/assets/images/project_bharat_land_converter.jpg',
+  swiftResume: '/src/assets/images/project_swift_resume.jpg',
+  imageCompressor: '/src/assets/images/project_image_compressor.jpg',
+  gamehub: '/src/assets/images/project_gamehub.jpg',
+  ladestackDrive: '/src/assets/images/project_ladestack_drive.jpg',
   blogLight: '/src/assets/images/blog_typography_light_1794977315392.jpg',
+  ideStudio: '/src/assets/images/project_gb_coder.jpg',
+  pdfEditorial: '/src/assets/images/project_ls_pdf.jpg',
+  systemsGrid: '/src/assets/images/project_bharat_land_converter.jpg',
 } as const;
 
 export const PROFILE = {
@@ -66,6 +75,7 @@ export const PROFILE = {
   displayName: 'Girish Lade',
   eyebrow: 'DEVELOPER & PRODUCT DESIGNER',
   headline: 'UI/UX Designer · Full-Stack Developer · Founder of LadeStack',
+  avatar: SITE_ASSETS.profilePicture,
   supportingPositioning: 'Engineer by training. Product builder by choice.',
   primaryStatement: 'Building useful software with thoughtful design.',
   location: 'Pune, Maharashtra, India',
